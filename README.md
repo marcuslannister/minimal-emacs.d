@@ -81,7 +81,7 @@ The author uses *minimal-emacs.d* as his `early-init.el` and `init.el`, alongsid
 
 Execute the following command install this repository into `~/.emacs.d`:
 ```
-git clone https://github.com/jamescherti/minimal-emacs.d ~/.emacs.d
+git clone https://github.com/marcuslannister/minimal-emacs.d ~/.emacs.d
 ```
 
 ### Alternative: Install minimal-emacs.d into `~/.minimal-emacs.d`
@@ -90,7 +90,7 @@ To install *minimal-emacs.d* in a non-default directory, use the `--init-directo
 
 1. Clone the repository into `~/.minimal-emacs.d/` using:
    ```
-   git clone https://github.com/jamescherti/minimal-emacs.d ~/.minimal-emacs.d
+   git clone https://github.com/marcuslannister/minimal-emacs.d ~/.minimal-emacs.d
    ```
 
 2. Start Emacs with the new configuration directory:
@@ -1011,7 +1011,7 @@ Add to `~/.emacs.d/pre-early-init.el`:
 (setq minimal-emacs-package-initialize-and-refresh nil)
 ```
 
-(According to arthsmn, a *minimal-emacs.d* user, the change above also improves startup time. [In this user's case](https://github.com/jamescherti/minimal-emacs.d/pull/22), the startup time decreased from 1.06 seconds to 0.56 seconds.)
+(According to arthsmn, a *minimal-emacs.d* user, the change above also improves startup time. [In this user's case](https://github.com/marcuslannister/minimal-emacs.d/pull/22), the startup time decreased from 1.06 seconds to 0.56 seconds.)
 
 And [add the elpaca bootstrap code](https://github.com/progfolio/elpaca?tab=readme-ov-file#installer) to `~/.emacs.d/pre-init.el`:
 ```elisp
@@ -1273,7 +1273,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Links
 
-- [minimal-emacs.d @GitHub](https://github.com/jamescherti/minimal-emacs.d)
+- [minimal-emacs.d @GitHub](https://github.com/marcuslannister/minimal-emacs.d)
 
 Other Emacs packages by the same author:
 - [compile-angel.el](https://github.com/jamescherti/compile-angel.el): **Speed up Emacs!** This package guarantees that all .el files are both byte-compiled and native-compiled, which significantly speeds up Emacs.
