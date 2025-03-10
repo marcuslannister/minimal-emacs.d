@@ -249,3 +249,10 @@
 
 (evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
 
+(set-face-attribute 'default nil :font "MonoLisa Nerd Font-16")
+
+(load-theme 'dracula t)
+
+;; start every frame maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
