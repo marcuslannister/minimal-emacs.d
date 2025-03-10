@@ -25,3 +25,222 @@
 
 (setq auto-save-visited-interval 5)   ; Save after 5 seconds if inactivity
 (auto-save-visited-mode 1)
+
+(use-package corfu
+  :ensure t
+  :defer t
+  :commands (corfu-mode global-corfu-mode)
+
+  :hook ((prog-mode . corfu-mode)
+         (shell-mode . corfu-mode)
+         (eshell-mode . corfu-mode))
+
+  :custom
+  ;; Hide commands in M-x which do not apply to the current mode.
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  ;; Disable Ispell completion function. As an alternative try `cape-dict'.
+  (text-mode-ispell-word-completion nil)
+  (tab-always-indent 'complete)
+
+  ;; Enable Corfu
+  :config
+  (global-corfu-mode))
+
+(use-package cape
+  :ensure t
+  :defer t
+  :commands (cape-dabbrev cape-file cape-elisp-block)
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  ;; Add to the global default value of `completion-at-point-functions' which is
+  ;; used by `completion-at-point'.
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
+
+;; evil-want-keybinding must be declared before Evil and Evil Collection
+(setq evil-want-keybinding nil)
+
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-undo-system 'undo-fu)
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :custom
+  (evil-want-Y-yank-to-eol t)
+  :config
+  (evil-select-search-module 'evil-search-module 'evil-search)
+  (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
+
+(use-package undo-fu
+  :ensure t
+  :commands (undo-fu-only-undo
+             undo-fu-only-redo
+             undo-fu-only-redo-all
+             undo-fu-disable-checkpoint))
+
+(use-package undo-fu-session
+  :ensure t
+  :config
+  (undo-fu-session-global-mode))
+
+(use-package vim-tab-bar
+  :ensure t
+  :commands vim-tab-bar-mode
+  :hook (after-init . vim-tab-bar-mode))
+
+(use-package vdiff
+  :ensure t
+  :defer t
+  :commands (vdiff-buffers
+             vdiff-buffers3
+             vdiff-quit
+             vdiff-files
+             vdiff-files3)
+  :custom
+  (vdiff-auto-refine t)
+  (vdiff-only-highlight-refinements t))
+
+(use-package evil-visualstar
+  :after evil
+  :ensure t
+  :defer t
+  :commands global-evil-visualstar-mode
+  :hook (after-init . global-evil-visualstar-mode))
+
+;(use-package evil-surround
+;  :after evil
+;  :ensure t
+;  :defer t
+;  :commands global-evil-surround-mode
+;  :custom
+;  (evil-surround-pairs-alist
+;   '((?\( . ("(" . ")"))
+;     (?\[ . ("[" . "]"))
+;     (?\{ . ("{" . "}"))
+;     (?\) . ("(" . ")"))
+;     (?\] . ("[" . "]"))
+;     (?\} . ("{" . "}"))
+;
+;     (?< . ("<" . ">"))
+;     (?> . ("<" . ">"))))
+;  :hook (after-init . global-evil-surround-mode))
+
+;(with-eval-after-load "evil"
+;  (evil-define-operator my-evil-comment-or-uncomment (beg end)
+;    "Toggle comment for the region between BEG and END."
+;    (interactive "<r>")
+;    (comment-or-uncomment-region beg end))
+;  (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment))
+;
+;(use-package evil-snipe
+;  :defer t
+;  :commands evil-snipe-mode
+;  :hook (after-init . evil-snipe-mode))
+
+;; Display of line numbers in the buffer:
+;; (display-line-numbers-mode 1)
+
+;(use-package which-key
+;  :ensure nil ; builtin
+;  :defer t
+;  :commands which-key-mode
+;  :hook (after-init . which-key-mode)
+;  :custom
+;  (which-key-idle-delay 1.5)
+;  (which-key-idle-secondary-delay 0.25)
+;  (which-key-add-column-padding 1)
+;  (which-key-max-description-length 40))
+;
+;(unless (and (eq window-system 'mac)
+;             (bound-and-true-p mac-carbon-version-string))
+;  ;; Enables `pixel-scroll-precision-mode' on all operating systems and Emacs
+;  ;; versions, except for emacs-mac.
+;  ;;
+;  ;; Enabling `pixel-scroll-precision-mode' is unnecessary with emacs-mac, as
+;  ;; this version of Emacs natively supports smooth scrolling.
+;  ;; https://bitbucket.org/mituharu/emacs-mac/commits/65c6c96f27afa446df6f9d8eff63f9cc012cc738
+;  (setq pixel-scroll-precision-use-momentum nil) ; Precise/smoother scrolling
+;  (pixel-scroll-precision-mode 1))
+
+;; Display the time in the modeline
+(display-time-mode 1)
+
+;; Paren match highlighting
+(show-paren-mode 1)
+
+;; Track changes in the window configuration, allowing undoing actions such as
+;; closing windows.
+(winner-mode 1)
+
+;; Replace selected text with typed text
+(delete-selection-mode 1)
+
+;; Configure Emacs to ask for confirmation before exiting
+(setq confirm-kill-emacs 'y-or-n-p)
+
+(use-package uniquify
+  :ensure nil
+  :custom
+  (uniquify-buffer-name-style 'reverse)
+  (uniquify-separator "•")
+  (uniquify-after-kill-buffer-p t)
+  (uniquify-ignore-buffers-re "^\\*"))
+
+;; Window dividers separate windows visually. Window dividers are bars that can
+;; be dragged with the mouse, thus allowing you to easily resize adjacent
+;; windows.
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Window-Dividers.html
+(add-hook 'after-init-hook #'window-divider-mode)
+
+;; Dired buffers: Automatically hide file details (permissions, size,
+;; modification date, etc.) and all the files in the `dired-omit-files' regular
+;; expression for a cleaner display.
+(add-hook 'dired-mode-hook #'dired-hide-details-mode)
+
+;; Hide files from dired
+(setq dired-omit-files (concat "\\`[.]\\'"
+                               "\\|\\(?:\\.js\\)?\\.meta\\'"
+                               "\\|\\.\\(?:elc|a\\|o\\|pyc\\|pyo\\|swp\\|class\\)\\'"
+                               "\\|^\\.DS_Store\\'"
+                               "\\|^\\.\\(?:svn\\|git\\)\\'"
+                               "\\|^\\.ccls-cache\\'"
+                               "\\|^__pycache__\\'"
+                               "\\|^\\.project\\(?:ile\\)?\\'"
+                               "\\|^flycheck_.*"
+                               "\\|^flymake_.*"))
+(add-hook 'dired-mode-hook #'dired-omit-mode)
+
+;; Enable on-the-fly spell checking (Flyspell mode).
+(add-hook 'text-mode-hook #'flyspell-mode)
+
+;; Configures Aspell's suggestion mode to "ultra", which provides more
+;; aggressive and detailed suggestions for misspelled words. The language
+;; is set to "en_US" for US English, which can be replaced with your desired
+;; language code (e.g., "en_GB" for British English, "de_DE" for German).
+(setq ispell-program-name "aspell")
+(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+
+;; Configure Emacs to ask for confirmation before exiting
+(setq confirm-kill-emacs 'y-or-n-p)
+
+;; Enabled backups save your changes to a file intermittently
+(setq make-backup-files t)
+(setq vc-make-backup-files t)
+(setq kept-old-versions 10)
+(setq kept-new-versions 10)
+
+;; My Customization
+(setq mac-option-modifier 'meta)
+
+(evil-set-leader 'motion (kbd "SPC"))
+
+(evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
+
