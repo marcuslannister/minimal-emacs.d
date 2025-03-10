@@ -237,6 +237,23 @@
 (setq kept-old-versions 10)
 (setq kept-new-versions 10)
 
+(use-package org
+  :ensure t
+  :defer t
+  :commands (org-mode org-version)
+  :mode
+  ("\\.org\\'" . org-mode)
+  :custom
+  (org-hide-leading-stars t)
+  (org-startup-indented t)
+  (org-adapt-indentation nil)
+  (org-edit-src-content-indentation 0)
+  (org-startup-truncated nil)
+  (org-fontify-done-headline t)
+  (org-fontify-todo-headline t)
+  (org-fontify-whole-heading-line t)
+  (org-fontify-quote-and-verse-blocks t))
+
 ;; My Customization
 (setq mac-option-modifier 'meta)
 
@@ -255,4 +272,19 @@
 
 ;; start every frame maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
+
+;; Show one week list in org agenda view
+  (setq org-agenda-start-day "-1d")
+  (setq org-agenda-span 7)
+  (setq org-agenda-start-on-weekday 1)
+  (setq org-agenda-files
+      (seq-filter (lambda(x) (not (string-match "/.stversions/"(file-name-directory x))))
+       (directory-files-recursively "~/org/" "\\.org$")
+       ))
+  (setq org-agenda-clockreport-parameter-plist
+      (quote (:maxlevel 5 :fileskip0 t :compact t :narrow 80 :formula % )))
 
