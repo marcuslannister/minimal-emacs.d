@@ -148,27 +148,27 @@
 ;; Display of line numbers in the buffer:
 ;; (display-line-numbers-mode 1)
 
-;(use-package which-key
-;  :ensure nil ; builtin
-;  :defer t
-;  :commands which-key-mode
-;  :hook (after-init . which-key-mode)
-;  :custom
-;  (which-key-idle-delay 1.5)
-;  (which-key-idle-secondary-delay 0.25)
-;  (which-key-add-column-padding 1)
-;  (which-key-max-description-length 40))
-;
-;(unless (and (eq window-system 'mac)
-;             (bound-and-true-p mac-carbon-version-string))
-;  ;; Enables `pixel-scroll-precision-mode' on all operating systems and Emacs
-;  ;; versions, except for emacs-mac.
-;  ;;
-;  ;; Enabling `pixel-scroll-precision-mode' is unnecessary with emacs-mac, as
-;  ;; this version of Emacs natively supports smooth scrolling.
-;  ;; https://bitbucket.org/mituharu/emacs-mac/commits/65c6c96f27afa446df6f9d8eff63f9cc012cc738
-;  (setq pixel-scroll-precision-use-momentum nil) ; Precise/smoother scrolling
-;  (pixel-scroll-precision-mode 1))
+(use-package which-key
+  :ensure nil ; builtin
+  :defer t
+  :commands which-key-mode
+  :hook (after-init . which-key-mode)
+  :custom
+  (which-key-idle-delay 1.5)
+  (which-key-idle-secondary-delay 0.25)
+  (which-key-add-column-padding 1)
+  (which-key-max-description-length 40))
+
+(unless (and (eq window-system 'mac)
+             (bound-and-true-p mac-carbon-version-string))
+  ;; Enables `pixel-scroll-precision-mode' on all operating systems and Emacs
+  ;; versions, except for emacs-mac.
+  ;;
+  ;; Enabling `pixel-scroll-precision-mode' is unnecessary with emacs-mac, as
+  ;; this version of Emacs natively supports smooth scrolling.
+  ;; https://bitbucket.org/mituharu/emacs-mac/commits/65c6c96f27afa446df6f9d8eff63f9cc012cc738
+  (setq pixel-scroll-precision-use-momentum nil) ; Precise/smoother scrolling
+  (pixel-scroll-precision-mode 1))
 
 ;; Display the time in the modeline
 (display-time-mode 1)
@@ -241,6 +241,11 @@
 (setq mac-option-modifier 'meta)
 
 (evil-set-leader 'motion (kbd "SPC"))
+
+(evil-define-key nil 'global
+    (kbd "<leader> /")  '("Commentary" . evil-commentary-line)
+    (kbd "<leader> bn") '("Next buffer" . evil-next-buffer)
+    (kbd "<leader> bp") '("Prev buffer" . evil-prev-buffer))
 
 (evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
 
