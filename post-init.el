@@ -255,18 +255,16 @@
   (org-fontify-quote-and-verse-blocks t))
 
 ;; My Customization
-(setq mac-option-modifier 'meta)
-
-(evil-set-leader 'motion (kbd "SPC"))
-
-(evil-define-key nil 'global
-    (kbd "<leader> /")  '("Commentary" . evil-commentary-line)
-    (kbd "<leader> bn") '("Next buffer" . evil-next-buffer)
-    (kbd "<leader> bp") '("Prev buffer" . evil-prev-buffer))
-
-(evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
-
 (load-theme 'dracula t)
+
+ ;; Load OS-specific configurations
+(cond
+ ((eq system-type 'windows-nt)
+  (load (expand-file-name "windows-config.el" user-emacs-directory)))
+ ((eq system-type 'darwin)
+  (load (expand-file-name "macos-config.el" user-emacs-directory)))
+ ((eq system-type 'gnu/linux)
+  (load (expand-file-name "linux-config.el" user-emacs-directory))))
 
 ;; start every frame maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -282,11 +280,24 @@
   (setq org-agenda-clockreport-parameter-plist
       (quote (:maxlevel 5 :fileskip0 t :compact t :narrow 80 :formula % )))
 
- ;; Load OS-specific configurations
-(cond
- ((eq system-type 'windows-nt)
-  (load (expand-file-name "windows-config.el" user-emacs-directory)))
- ((eq system-type 'darwin)
-  (load (expand-file-name "macos-config.el" user-emacs-directory)))
- ((eq system-type 'gnu/linux)
-  (load (expand-file-name "linux-config.el" user-emacs-directory))))
+(evil-set-leader 'motion (kbd "SPC"))
+
+;; customize key
+(evil-define-key nil 'global
+    ;; <leader>
+    (kbd "<leader> :")  '("M-x" . execute-extended-command)
+    (kbd "<leader> .")  '("Fine file" . find-file)
+    (kbd "<leader> ,")  '("Switch buffer" . switch-to-buffer)
+
+    ;; <leader> q --- quit/session
+    (kbd "<leader> qq")  '("Quit Emacs" . save-buffers-kill-terminal)
+
+    ;; comment
+    (kbd "<leader> /")  '("Commentary" . evil-commentary-line)
+
+    ;; buffer
+    (kbd "<leader> bn") '("Next buffer" . evil-next-buffer)
+    (kbd "<leader> bp") '("Prev buffer" . evil-prev-buffer))
+
+
+;(evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
