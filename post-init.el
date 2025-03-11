@@ -266,16 +266,10 @@
 
 (evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
 
-(set-face-attribute 'default nil :font "MonoLisa Nerd Font-16")
-
 (load-theme 'dracula t)
 
 ;; start every frame maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
 
 ;; Show one week list in org agenda view
   (setq org-agenda-start-day "-1d")
@@ -288,3 +282,11 @@
   (setq org-agenda-clockreport-parameter-plist
       (quote (:maxlevel 5 :fileskip0 t :compact t :narrow 80 :formula % )))
 
+ ;; Load OS-specific configurations
+(cond
+ ((eq system-type 'windows-nt)
+  (load (expand-file-name "windows-config.el" user-emacs-directory)))
+ ((eq system-type 'darwin)
+  (load (expand-file-name "macos-config.el" user-emacs-directory)))
+ ((eq system-type 'gnu/linux)
+  (load (expand-file-name "linux-config.el" user-emacs-directory))))
