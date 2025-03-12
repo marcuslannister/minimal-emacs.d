@@ -255,9 +255,20 @@
   (org-fontify-quote-and-verse-blocks t))
 
 ;; My Customization
-(load-theme 'dracula t)
+;(load-theme 'dracula t)
 
- ;; Load OS-specific configurations
+;; Using doom monokai theme
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-monokai-pro t))
+
+;; restart emacs command
+(use-package restart-emacs
+  :ensure t)
+
+
+;; Load OS-specific configurations
 (cond
  ((eq system-type 'windows-nt)
   (load (expand-file-name "windows-config.el" user-emacs-directory)))
@@ -292,6 +303,7 @@
 
     ;; <leader> q --- quit/session
     (kbd "<leader> qq")  '("Quit Emacs" . save-buffers-kill-terminal)
+    (kbd "<leader> qr")  '("Restart Emacs" . restart-emacs)
 
     ;; comment
     (kbd "<leader> /")  '("Commentary" . evil-commentary-line)
