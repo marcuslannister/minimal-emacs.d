@@ -266,8 +266,9 @@
  ((eq system-type 'gnu/linux)
   (load (expand-file-name "linux-config.el" user-emacs-directory))))
 
-;; start every frame maximized
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; Save/restore window size and position
+(desktop-save-mode 1)
+(add-to-list 'desktop-globals-to-save 'frameset-data)
 
 ;; Show one week list in org agenda view
   (setq org-agenda-start-day "-1d")
