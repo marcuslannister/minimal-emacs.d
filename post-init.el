@@ -432,6 +432,22 @@
   (setq org-agenda-clockreport-parameter-plist
       (quote (:maxlevel 5 :fileskip0 t :compact t :narrow 80 :formula % )))
 
+
+;; org journal
+(use-package org-journal
+  :ensure t)
+
+(setq org-journal-dir "~/org/journal/")
+(setq org-journal-file-type 'weekly)
+(setq org-journal-file-format "%Y%mW%V%d.org")
+(setq org-journal-date-format "%A, %Y/%m/%d")
+(setq org-journal-time-format "%Y%m%dT%H%M")
+(setq org-journal-enable-agenda-integration t)
+(setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"STRT\"|TODO=\"WAIT\"")
+;(map! :leader
+;      :desc "org-journal creat a entry" "j n" #'org-journal-new-entry
+;      :desc "org-journal open current journal file" "j o" #'org-journal-open-current-journal-file)
+
 (evil-set-leader 'motion (kbd "SPC"))
 
 ;; customize key
@@ -450,7 +466,18 @@
 
     ;; buffer
     (kbd "<leader> bn") '("Next buffer" . evil-next-buffer)
-    (kbd "<leader> bp") '("Prev buffer" . evil-prev-buffer))
+    (kbd "<leader> bp") '("Prev buffer" . evil-prev-buffer)
+    (kbd "<leader> bs") '("Save buffer" . basic-save-buffer)
+    (kbd "<leader> ba") '("Save all buffers" . evil-write-all)
+
+
+
+    ;; org journal
+    (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
+    (kbd "<leader> jo") '("Open current journal" . org-journal-open-current-journal-file))
 
 
 ;(evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
+
+
+
