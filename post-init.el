@@ -470,7 +470,8 @@
     (kbd "<leader> bs") '("Save buffer" . basic-save-buffer)
     (kbd "<leader> ba") '("Save all buffers" . evil-write-all)
 
-
+    ;; window 
+    (kbd "<leader> w") '("Window" . evil-window-map)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
