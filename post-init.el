@@ -420,6 +420,7 @@
 (desktop-save-mode 1)
 (add-to-list 'desktop-globals-to-save 'frameset-data)
 
+;; load org config file
 (load (expand-file-name "org-config.el" user-emacs-directory))
 
 ;; org journal
@@ -464,6 +465,9 @@
     (kbd "<leader> ot") '("Todo list" . org-todo-list)
     (kbd "<leader> om") '("Tags search" . org-tags-view)
     (kbd "<leader> ov") '("View search" . org-search-view)
+    (kbd "<leader> oc") '("Todo change" . org-todo)
+    (kbd "<leader> op") '("Capture" . org-capture)
+    (kbd "<leader> oct") '("Update time" . org-clock-update-time-maybe)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
