@@ -254,7 +254,6 @@
   (org-fontify-whole-heading-line t)
   (org-fontify-quote-and-verse-blocks t))
 
-
 (use-package vertico
   ;; (Note: It is recommended to also enable the savehist package.)
   :ensure t
@@ -421,17 +420,7 @@
 (desktop-save-mode 1)
 (add-to-list 'desktop-globals-to-save 'frameset-data)
 
-;; Show one week list in org agenda view
-  (setq org-agenda-start-day "-1d")
-  (setq org-agenda-span 7)
-  (setq org-agenda-start-on-weekday 1)
-  (setq org-agenda-files
-      (seq-filter (lambda(x) (not (string-match "/.stversions/"(file-name-directory x))))
-       (directory-files-recursively "~/org/" "\\.org$")
-       ))
-  (setq org-agenda-clockreport-parameter-plist
-      (quote (:maxlevel 5 :fileskip0 t :compact t :narrow 80 :formula % )))
-
+(load (expand-file-name "org-config.el" user-emacs-directory))
 
 ;; org journal
 (use-package org-journal
@@ -444,9 +433,6 @@
 (setq org-journal-time-format "%Y%m%dT%H%M")
 (setq org-journal-enable-agenda-integration t)
 (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"STRT\"|TODO=\"WAIT\"")
-;(map! :leader
-;      :desc "org-journal creat a entry" "j n" #'org-journal-new-entry
-;      :desc "org-journal open current journal file" "j o" #'org-journal-open-current-journal-file)
 
 (evil-set-leader 'motion (kbd "SPC"))
 
@@ -473,12 +459,15 @@
     ;; window 
     (kbd "<leader> w") '("Window" . evil-window-map)
 
+    ;; <leader> o --- org
+    (kbd "<leader> oa") '("Agenda" . org-agenda)
+    (kbd "<leader> ot") '("Todo list" . org-todo-list)
+    (kbd "<leader> om") '("Tags search" . org-tags-view)
+    (kbd "<leader> ov") '("View search" . org-search-view)
+
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
     (kbd "<leader> jo") '("Open current journal" . org-journal-open-current-journal-file))
 
-
 ;(evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
-
-
 
