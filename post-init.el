@@ -435,6 +435,10 @@
 (setq org-journal-enable-agenda-integration t)
 (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"STRT\"|TODO=\"WAIT\"")
 
+;; Bind Super+v to paste (yank)
+(global-set-key (kbd "s-v") 'yank)
+
+;; Set leader key
 (evil-set-leader 'motion (kbd "SPC"))
 
 ;; customize key
