@@ -467,7 +467,9 @@
     (kbd "<leader> ov") '("View search" . org-search-view)
     (kbd "<leader> oc") '("Todo change" . org-todo)
     (kbd "<leader> op") '("Capture" . org-capture)
-    (kbd "<leader> oct") '("Update time" . org-clock-update-time-maybe)
+    (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
+    (kbd "<leader> ci") '("Start clock" . org-clock-in)
+    (kbd "<leader> co") '("Stop clock" . org-clock-out)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
