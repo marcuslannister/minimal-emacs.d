@@ -1,4 +1,5 @@
-;; org-config.el - Org Mode settings
+;;; org-config.el --- Org Mode settings -*- no-byte-compile: t; lexical-binding: t; -*-
+
 
 ;; Show one week list in org agenda view
 (setq org-agenda-start-day "-1d")
@@ -13,7 +14,7 @@
 
 (run-at-time "5 min" (* 5 60) #'org-agenda-redo)
 
-;; config from https://doc.norang.ca/org-mode.html
+;;; config from https://doc.norang.ca/org-mode.html
 
 ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
 (setq org-clock-out-remove-zero-time-clocks t)
@@ -96,7 +97,7 @@
 ;; Use the current window for indirect buffer display
 ;(setq org-indirect-buffer-display 'current-window)
 
-;;;; Refile settings
+;; Refile settings
 ; Exclude DONE state tasks from refile targets
 (defun bh/verify-refile-target ()
   "Exclude todo keywords with a done state from refile targets"
@@ -104,6 +105,8 @@
 
 (setq org-refile-target-verify-function 'bh/verify-refile-target)
 
+
+;;; 8 Custom Agenda Views
 ;; Do not dim blocked tasks
 (setq org-agenda-dim-blocked-tasks nil)
 
@@ -183,3 +186,14 @@
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
                        (org-tags-match-list-sublevels nil))))
                nil))))
+
+(defun bh/org-auto-exclude-function (tag)
+  "Automatic task exclusion in the agenda with / RET"
+  (and (cond
+        ((string= tag "hold")
+         t)
+        ((string= tag "farm")
+         t))
+       (concat "-" tag)))
+
+(setq org-agenda-auto-exclude-function 'bh/org-auto-exclude-function)
