@@ -1,6 +1,5 @@
 ;;; org-config.el --- Org Mode settings -*- no-byte-compile: t; lexical-binding: t; -*-
 
-
 ;; Show one week list in org agenda view
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-span 7)
@@ -304,7 +303,7 @@ as the default task."
           (when bh/keep-clock-running
             (bh/clock-in-default-task)))))))
 
-(defvar bh/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
+(defvar bh/organization-task-id "6B6FB404-85A4-4212-B9D0-D4C2C527DD9D")
 
 (defun bh/clock-in-organization-task-as-default ()
   (interactive)
@@ -319,4 +318,38 @@ as the default task."
     (bh/clock-in-parent-task)))
 
 (add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
+
+(require 'org-id)
+(defun bh/clock-in-task-by-id (id)
+  "Clock in a task by id"
+  (org-with-point-at (org-id-find id 'marker)
+    (org-clock-in nil)))
+
+(defun bh/clock-in-last-task (arg)
+  "Clock in the interrupted task if there is one
+Skip the default task and get the next one.
+A prefix arg forces clock in of the default task."
+  (interactive "p")
+  (let ((clock-in-to-task
+         (cond
+          ((eq arg 4) org-clock-default-task)
+          ((and (org-clock-is-active)
+                (equal org-clock-default-task (cadr org-clock-history)))
+           (caddr org-clock-history))
+          ((org-clock-is-active) (cadr org-clock-history))
+          ((equal org-clock-default-task (car org-clock-history)) (cadr org-clock-history))
+          (t (car org-clock-history)))))
+    (widen)
+    (org-with-point-at clock-in-to-task
+      (org-clock-in nil))))
+
+;; The following setting makes time editing use discrete minute intervals (no rounding) increments:
+(setq org-time-stamp-rounding-minutes (quote (1 1)))
+
+;; The following setting shows 1 minute clocking gaps.
+(setq org-agenda-clock-consistency-checks
+      (quote (:max-duration "4:00"
+              :min-duration 0
+              :max-gap 0
+              :gap-ok-around ("4:00"))))
 
