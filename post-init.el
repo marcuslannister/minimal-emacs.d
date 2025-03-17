@@ -460,6 +460,7 @@
     (kbd "<leader> bp") '("Prev buffer" . evil-prev-buffer)
     (kbd "<leader> bs") '("Save buffer" . basic-save-buffer)
     (kbd "<leader> ba") '("Save all buffers" . evil-write-all)
+    (kbd "<leader> bk") '("Kill current buffer" . kill-current-buffer)
 
     ;; window 
     (kbd "<leader> w") '("Window" . evil-window-map)
@@ -471,9 +472,13 @@
     (kbd "<leader> ov") '("View search" . org-search-view)
     (kbd "<leader> oc") '("Todo change" . org-todo)
     (kbd "<leader> op") '("Capture" . org-capture)
+
+    ;; <leader> c --- clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
     (kbd "<leader> ci") '("Start clock" . org-clock-in)
     (kbd "<leader> co") '("Stop clock" . org-clock-out)
+    (kbd "<leader> cpi") '("Punch in clock" . bh/punch-in)
+    (kbd "<leader> cpo") '("Punch out clock" . bh/punch-out)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
