@@ -1,9 +1,13 @@
 ;;; org-config.el --- Org Mode settings -*- no-byte-compile: t; lexical-binding: t; -*-
 
 ;; Show one week list in org agenda view
-(setq org-agenda-start-day "-1d")
-(setq org-agenda-span 7)
-(setq org-agenda-start-on-weekday 1)
+;(setq org-agenda-start-day "-1d")
+;(setq org-agenda-span 7)
+;;(setq org-agenda-start-on-weekday 1)
+
+;; To keep the agenda fast
+(setq org-agenda-span 'day)
+
 (setq org-agenda-files
     (seq-filter (lambda(x) (not (string-match "/.stversions/"(file-name-directory x))))
      (directory-files-recursively "~/org/" "\\.org$")
