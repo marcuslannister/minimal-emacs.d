@@ -267,6 +267,8 @@
   :commands (org-mode org-version)
   :mode
   ("\\.org\\'" . org-mode)
+  :config
+  (add-to-list 'org-modules 'org-habit)
   :custom
   (org-hide-leading-stars t)
   (org-startup-indented t)
@@ -505,6 +507,7 @@
     (kbd "<leader> oc") '("Todo change" . org-todo)
     (kbd "<leader> op") '("Capture" . org-capture)
     (kbd "<leader> od") '("Insert deadline" . org-deadline)
+    (kbd "<leader> or") '("Refile" . org-refile)
 
     ;; <leader> c --- clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
