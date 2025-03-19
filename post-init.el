@@ -517,5 +517,12 @@
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
     (kbd "<leader> jo") '("Open current journal" . org-journal-open-current-journal-file))
 
+;; Configure hjkl for Org Agenda
+(with-eval-after-load 'org-agenda
+  (define-key org-agenda-mode-map (kbd "h") 'evil-backward-char)    ; Move left
+  (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)  ; Move down
+  (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line) ; Move up
+  (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char))    ; Move right
+
 ;(evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
 
