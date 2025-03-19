@@ -459,6 +459,12 @@
 (setq org-journal-enable-agenda-integration t)
 (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"STRT\"|TODO=\"WAIT\"")
 
+
+(defun insert-timestamp ()
+  "Insert current timestamp in format YYYYMMDDTHHMM."
+  (interactive)
+  (insert (format-time-string "%Y%m%dT%H%M")))
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 
@@ -471,6 +477,7 @@
     (kbd "<leader> :")  '("M-x" . execute-extended-command)
     (kbd "<leader> .")  '("Fine file" . find-file)
     (kbd "<leader> ,")  '("Switch buffer" . switch-to-buffer)
+    (kbd "<leader> ;")  '("Insert timestamp" . insert-timestamp)
 
     ;; <leader> q --- quit/session
     (kbd "<leader> qq")  '("Quit Emacs" . save-buffers-kill-terminal)
@@ -485,6 +492,7 @@
     (kbd "<leader> bs") '("Save buffer" . basic-save-buffer)
     (kbd "<leader> ba") '("Save all buffers" . evil-write-all)
     (kbd "<leader> bk") '("Kill current buffer" . kill-current-buffer)
+    (kbd "<leader> bro") '("Read only mode" . read-only-mode)
 
     ;; window
     (kbd "<leader> w") '("Window" . evil-window-map)
@@ -496,6 +504,7 @@
     (kbd "<leader> ov") '("View search" . org-search-view)
     (kbd "<leader> oc") '("Todo change" . org-todo)
     (kbd "<leader> op") '("Capture" . org-capture)
+    (kbd "<leader> od") '("Insert deadline" . org-deadline)
 
     ;; <leader> c --- clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
