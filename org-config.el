@@ -358,6 +358,8 @@ A prefix arg forces clock in of the default task."
               :gap-ok-around ("4:00"))))
 
 ;; 14 GTD Stuff
+(setq org-stuck-projects (quote ("" nil nil "")))
+
 (defun bh/is-project-p ()
   "Any task with a todo keyword subtask"
   (save-restriction
