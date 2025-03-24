@@ -508,6 +508,7 @@
     (kbd "<leader> op") '("Capture" . org-capture)
     (kbd "<leader> od") '("Insert deadline" . org-deadline)
     (kbd "<leader> or") '("Refile" . org-refile)
+    (kbd "<leader> oil") '("Inser link" . org-insert-link)
 
     ;; <leader> c --- clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
