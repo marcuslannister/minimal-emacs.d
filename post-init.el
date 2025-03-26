@@ -507,6 +507,7 @@
     (kbd "<leader> oc") '("Todo change" . org-todo)
     (kbd "<leader> op") '("Capture" . org-capture)
     (kbd "<leader> od") '("Insert deadline" . org-deadline)
+    (kbd "<leader> os") '("Insert schedule" . org-schedule)
     (kbd "<leader> or") '("Refile" . org-refile)
     (kbd "<leader> oil") '("Inser link" . org-insert-link)
 
