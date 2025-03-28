@@ -658,3 +658,11 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 
 ; If we leave Emacs running overnight - reset the appointments one minute after midnight
 (run-at-time "24:01" nil 'bh/org-agenda-to-appt)
+
+;; custom command by ken
+(defun kk/org-clock-in-switch-task ()
+  "Clock in and switch task."
+  (interactive)
+  (let ((current-prefix-arg '(4)))  ;; This sets the C-u prefix argument
+    (call-interactively 'org-clock-in)))
+

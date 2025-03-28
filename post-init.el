@@ -517,6 +517,9 @@
     (kbd "<leader> co") '("Stop clock" . org-clock-out)
     (kbd "<leader> cpi") '("Punch in clock" . bh/punch-in)
     (kbd "<leader> cpo") '("Punch out clock" . bh/punch-out)
+    (kbd "<leader> cg") '("Go to clock" . org-clock-goto)
+    (kbd "<leader> clt") '("Clock in the interrupted task" . bh/clock-in-last-task)
+    (kbd "<leader> cs") '("Switch task" . kk/org-clock-in-switch-task)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
