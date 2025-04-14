@@ -523,6 +523,10 @@
    (denote--title-prompt)
    '("journal")))
 
+;; denote
+(use-package zoxide
+  :ensure t)
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 
@@ -577,13 +581,18 @@
     (kbd "<leader> clt") '("Clock in the interrupted task" . bh/clock-in-last-task)
     (kbd "<leader> cs") '("Switch task" . kk/org-clock-in-switch-task)
 
-    ;; org journal
-    (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
-    (kbd "<leader> jo") '("Open current journal" . org-journal-open-current-journal-file)
-
     ;; denote
     (kbd "<leader> dn") '("Creat a denote" . denote)
-    (kbd "<leader> dr") '("Rename file" . denote-rename-file))
+    (kbd "<leader> dr") '("Rename file" . denote-rename-file)
+
+    ;; zoxide
+    (kbd "<leader> zf") '("Find file under a path saved in zoxide" . zoxide-find-file)
+    (kbd "<leader> zt") '("Travel to a path saved in zoxide" . zoxide-travel)
+    (kbd "<leader> zc") '("Change working directory to a path" . zoxide-cd)
+
+    ;; org journal
+    (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
+    (kbd "<leader> jo") '("Open current journal" . org-journal-open-current-journal-file))
 
 ;; Configure hjkl for Org Agenda
 (with-eval-after-load 'org-agenda
