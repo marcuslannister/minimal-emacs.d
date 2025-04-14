@@ -461,11 +461,67 @@
 (setq org-journal-enable-agenda-integration t)
 (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"STRT\"|TODO=\"WAIT\"")
 
-
 (defun insert-timestamp ()
   "Insert current timestamp in format YYYYMMDDTHHMM."
   (interactive)
   (insert (format-time-string "%Y%m%dT%H%M")))
+
+;; denote
+(use-package denote
+  :ensure t)
+
+;; Remember to check the doc strings of those variables.
+(setq denote-directory (expand-file-name "~/Obsidian/Note/"))
+(setq denote-known-keywords '("emacs" "git" "software" "network" "ai" "economics"))
+(setq denote-infer-keywords t)
+(setq denote-sort-keywords t)
+(setq denote-file-type 'markdown-yaml) ; Org is the default, set others here
+(setq denote-prompts '(title keywords))
+(setq denote-excluded-directories-regexp nil)
+(setq denote-excluded-keywords-regexp nil)
+
+;; Pick dates, where relevant, with Org's advanced interface:
+(setq denote-date-prompt-use-org-read-date t)
+
+;; Read this manual for how to specify `denote-templates'.  We do not
+;; include an example here to avoid potential confusion.
+
+;; We allow multi-word keywords by default.  The author's personal
+;; preference is for single-word keywords for a more rigid workflow.
+(setq denote-allow-multi-word-keywords t)
+
+(setq denote-date-format nil) ; read doc string
+
+;; By default, we do not show the context of links.  We just display
+;; file names.  This provides a more informative view.
+(setq denote-backlinks-show-context t)
+
+;; Also see `denote-link-backlinks-display-buffer-action' which is a bit
+;; advanced.
+
+;; If you use Markdown or plain text files (Org renders links as buttons
+;; right away)
+(add-hook 'find-file-hook #'denote-link-buttonize-buffer)
+
+;; We use different ways to specify a path for demo purposes.
+(setq denote-dired-directories
+      (list denote-directory (thread-last denote-directory (expand-file-name "attachments")) (expand-file-name "~/Documents/books")))
+
+;; Generic (great if you rename files Denote-style in lots of places):
+;; (add-hook 'dired-mode-hook #'denote-dired-mode)
+;;
+;; OR if only want it in `denote-dired-directories':
+(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+
+;; Here is a custom, user-level command from one of the examples we
+;; showed in this manual.  We define it here and add it to a key binding
+;; below.
+(defun my-denote-journal ()
+  "Create an entry tagged 'journal', while prompting for a title."
+  (interactive)
+  (denote
+   (denote--title-prompt)
+   '("journal")))
 
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
@@ -523,7 +579,11 @@
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
-    (kbd "<leader> jo") '("Open current journal" . org-journal-open-current-journal-file))
+    (kbd "<leader> jo") '("Open current journal" . org-journal-open-current-journal-file)
+
+    ;; denote
+    (kbd "<leader> dn") '("Creat a denote" . denote)
+    (kbd "<leader> dr") '("Rename file" . denote-rename-file))
 
 ;; Configure hjkl for Org Agenda
 (with-eval-after-load 'org-agenda
@@ -531,6 +591,4 @@
   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)  ; Move down
   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line) ; Move up
   (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char))    ; Move right
-
-;(evil-define-key 'normal 'global (kbd "<leader>d i") 'dired)
 
