@@ -594,6 +594,9 @@
   (add-hook 'markdown-mode-hook #'my-setup-markdown-toc)
   (add-hook 'markdown-ts-mode-hook #'my-setup-markdown-toc)
 
+(setq insert-directory-program "gls" dired-use-ls-dired t)
+(setq dired-listing-switches "-lt --time-style=long-iso")
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
