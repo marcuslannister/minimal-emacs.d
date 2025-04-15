@@ -243,7 +243,7 @@
 (add-hook 'dired-mode-hook #'dired-omit-mode)
 
 ;; Enable on-the-fly spell checking (Flyspell mode).
-;(add-hook 'text-mode-hook #'flyspell-mode)
+(add-hook 'text-mode-hook #'flyspell-mode)
 
 ;; Configures Aspell's suggestion mode to "ultra", which provides more
 ;; aggressive and detailed suggestions for misspelled words. The language
