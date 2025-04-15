@@ -534,6 +534,66 @@
    (interactive "P")
    (zoxide-open-with nil (lambda (file) (dired-jump other-window file)) t))
 
+(use-package markdown-mode
+  :ensure t
+  :defer t
+  :commands (gfm-mode gfm-view-mode markdown-mode markdown-view-mode)
+  :mode (("\\.markdown\\'" . markdown-mode)
+         ("\\.md\\'"       . markdown-mode)
+         ("README\\.md\\'" . gfm-mode)))
+
+;; Author: James Cherti
+;; URL: https://www.jamescherti.com/emacs-markdown-table-of-contents-update-before-save/
+;; License: MIT
+
+;; Configure the markdown-toc package
+(use-package markdown-toc
+  :ensure t
+  :defer t
+  :commands (markdown-toc-generate-toc
+             markdown-toc-generate-or-refresh-toc
+             markdown-toc-delete-toc
+             markdown-toc--toc-already-present-p))
+
+;; The following functions and hooks guarantee that any existing table of
+;; contents remains current whenever changes are made to the markdown file,
+;; while also ensuring that both the window start and cursor position remain
+;; unchanged.
+(defun my-markdown-toc-gen-if-present ()
+    (when (markdown-toc--toc-already-present-p)
+      (let* ((window (selected-window))
+             (buffer-in-selected-window (eq (window-buffer window)
+                                            (current-buffer)))
+             (window-hscroll nil)
+             (lines-before nil))
+        (when buffer-in-selected-window
+          (setq window-hscroll (window-hscroll))
+          (setq lines-before (count-screen-lines
+                              (save-excursion (goto-char (window-start))
+                                              (vertical-motion 0)
+                                              (point))
+                              (save-excursion (vertical-motion 0)
+                                              (point))
+                              nil
+                              window)))
+        (unwind-protect
+            (markdown-toc-generate-toc)
+          (when buffer-in-selected-window
+            (set-window-start window
+                              (save-excursion
+                                (vertical-motion 0)
+                                (line-move-visual (* -1 lines-before))
+                                (vertical-motion 0)
+                                (point)))
+            (set-window-hscroll window window-hscroll))))))
+
+  (defun my-setup-markdown-toc ()
+    "Setup the markdown-toc package."
+    (add-hook 'before-save-hook #'my-markdown-toc-gen-if-present -100 t))
+
+  (add-hook 'markdown-mode-hook #'my-setup-markdown-toc)
+  (add-hook 'markdown-ts-mode-hook #'my-setup-markdown-toc)
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 
