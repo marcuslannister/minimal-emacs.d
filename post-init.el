@@ -466,12 +466,20 @@
   (interactive)
   (insert (format-time-string "%Y%m%dT%H%M")))
 
+
 ;; denote
+;; Remember that the website version of this manual shows the latest
+;; developments, which may not be available in the package you are
+;; using.  Instead of copying from the web site, refer to the version
+;; of the documentation that comes with your package.  Evaluate:
+;;
+;;     (info "(denote) Sample configuration")
 (use-package denote
   :ensure t)
 
 ;; Remember to check the doc strings of those variables.
 (setq denote-directory (expand-file-name "~/Obsidian/Note/"))
+(setq denote-save-buffers nil)
 (setq denote-known-keywords '("emacs" "git" "software" "network" "ai" "economics"))
 (setq denote-infer-keywords t)
 (setq denote-sort-keywords t)
@@ -479,16 +487,11 @@
 (setq denote-prompts '(title keywords))
 (setq denote-excluded-directories-regexp nil)
 (setq denote-excluded-keywords-regexp nil)
-
-;; Pick dates, where relevant, with Org's advanced interface:
-(setq denote-date-prompt-use-org-read-date t)
+(setq denote-rename-confirmations '(rewrite-front-matter modify-file-name))
 
 ;; Read this manual for how to specify `denote-templates'.  We do not
 ;; include an example here to avoid potential confusion.
 
-;; We allow multi-word keywords by default.  The author's personal
-;; preference is for single-word keywords for a more rigid workflow.
-(setq denote-allow-multi-word-keywords t)
 
 (setq denote-date-format nil) ; read doc string
 
@@ -496,15 +499,18 @@
 ;; file names.  This provides a more informative view.
 (setq denote-backlinks-show-context t)
 
-;; Also see `denote-link-backlinks-display-buffer-action' which is a bit
+;; Also see `denote-backlinks-display-buffer-action' which is a bit
 ;; advanced.
 
-;; Links in plain text and Markdown files
+;; If you use Markdown or plain text files (Org renders links as buttons
+;; right away)
 (add-hook 'text-mode-hook #'denote-fontify-links-mode-maybe)
 
 ;; We use different ways to specify a path for demo purposes.
 (setq denote-dired-directories
-      (list denote-directory (thread-last denote-directory (expand-file-name "attachments")) (expand-file-name "~/Documents/books")))
+      (list denote-directory
+            (thread-last denote-directory (expand-file-name "attachments"))
+            (expand-file-name "~/Documents/books")))
 
 ;; Generic (great if you rename files Denote-style in lots of places):
 ;; (add-hook 'dired-mode-hook #'denote-dired-mode)
@@ -512,15 +518,13 @@
 ;; OR if only want it in `denote-dired-directories':
 (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
 
-;; Here is a custom, user-level command from one of the examples we
-;; showed in this manual.  We define it here and add it to a key binding
-;; below.
-(defun my-denote-journal ()
-  "Create an entry tagged 'journal', while prompting for a title."
-  (interactive)
-  (denote
-   (denote--title-prompt)
-   '("journal")))
+
+;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
+(denote-rename-buffer-mode 1)
+
+;(after! dired
+;  (setq dired-listing-switches "-lt --time-style=long-iso"))
+;(setq dired-listing-switches "-lt --time-style=long-iso")
 
 ;; denote
 (use-package zoxide
