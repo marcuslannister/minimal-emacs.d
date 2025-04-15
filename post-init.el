@@ -499,9 +499,8 @@
 ;; Also see `denote-link-backlinks-display-buffer-action' which is a bit
 ;; advanced.
 
-;; If you use Markdown or plain text files (Org renders links as buttons
-;; right away)
-(add-hook 'find-file-hook #'denote-link-buttonize-buffer)
+;; Links in plain text and Markdown files
+(add-hook 'text-mode-hook #'denote-fontify-links-mode-maybe)
 
 ;; We use different ways to specify a path for demo purposes.
 (setq denote-dired-directories
