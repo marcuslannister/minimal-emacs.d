@@ -596,7 +596,6 @@
 
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
-
 ;; Disable the space key in Dired so that it can be used as a leader key.
 (evil-collection-define-key 'normal 'dired-mode-map " " 'nil)
 
@@ -625,6 +624,7 @@
     (kbd "<leader> ba") '("Save all buffers" . evil-write-all)
     (kbd "<leader> bk") '("Kill current buffer" . kill-current-buffer)
     (kbd "<leader> bro") '("Read only mode" . read-only-mode)
+    (kbd "<leader> bm") '("View message buffer" . view-echo-area-messages)
 
     ;; window
     (kbd "<leader> w") '("Window" . evil-window-map)
