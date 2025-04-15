@@ -243,7 +243,7 @@
 (add-hook 'dired-mode-hook #'dired-omit-mode)
 
 ;; Enable on-the-fly spell checking (Flyspell mode).
-(add-hook 'text-mode-hook #'flyspell-mode)
+;(add-hook 'text-mode-hook #'flyspell-mode)
 
 ;; Configures Aspell's suggestion mode to "ultra", which provides more
 ;; aggressive and detailed suggestions for misspelled words. The language
@@ -532,6 +532,9 @@
 
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
+
+;; Disable the space key in Dired so that it can be used as a leader key.
+(evil-collection-define-key 'normal 'dired-mode-map " " 'nil)
 
 ;; Set leader key
 (evil-set-leader 'motion (kbd "SPC"))
