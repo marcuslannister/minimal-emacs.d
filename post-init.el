@@ -516,10 +516,10 @@
             (expand-file-name "~/Documents/books")))
 
 ;; Generic (great if you rename files Denote-style in lots of places):
-;; (add-hook 'dired-mode-hook #'denote-dired-mode)
+(add-hook 'dired-mode-hook #'denote-dired-mode)
 ;;
 ;; OR if only want it in `denote-dired-directories':
-(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+;; (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
 
 
 ;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
