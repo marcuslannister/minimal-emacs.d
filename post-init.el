@@ -229,6 +229,9 @@
 ;; expression for a cleaner display.
 (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
+(setq insert-directory-program "gls" dired-use-ls-dired t)
+(setq dired-listing-switches "-hlt --time-style=long-iso")
+
 ;; Hide files from dired
 (setq dired-omit-files (concat "\\`[.]\\'"
                                "\\|\\(?:\\.js\\)?\\.meta\\'"
@@ -522,10 +525,6 @@
 ;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
 (denote-rename-buffer-mode 1)
 
-;(after! dired
-;  (setq dired-listing-switches "-lt --time-style=long-iso"))
-;(setq dired-listing-switches "-lt --time-style=long-iso")
-
 ;; denote
 (use-package zoxide
   :ensure t)
@@ -593,9 +592,6 @@
 
   (add-hook 'markdown-mode-hook #'my-setup-markdown-toc)
   (add-hook 'markdown-ts-mode-hook #'my-setup-markdown-toc)
-
-(setq insert-directory-program "gls" dired-use-ls-dired t)
-(setq dired-listing-switches "-lt --time-style=long-iso")
 
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
