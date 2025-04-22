@@ -605,6 +605,9 @@
   (add-hook 'markdown-mode-hook #'my-setup-markdown-toc)
   (add-hook 'markdown-ts-mode-hook #'my-setup-markdown-toc)
 
+(use-package rg
+  :ensure t)
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
