@@ -140,23 +140,27 @@
   :commands global-evil-visualstar-mode
   :hook (after-init . global-evil-visualstar-mode))
 
-;(use-package evil-surround
-;  :after evil
-;  :ensure t
-;  :defer t
-;  :commands global-evil-surround-mode
-;  :custom
-;  (evil-surround-pairs-alist
-;   '((?\( . ("(" . ")"))
-;     (?\[ . ("[" . "]"))
-;     (?\{ . ("{" . "}"))
-;     (?\) . ("(" . ")"))
-;     (?\] . ("[" . "]"))
-;     (?\} . ("{" . "}"))
-;
-;     (?< . ("<" . ">"))
-;     (?> . ("<" . ">"))))
-;  :hook (after-init . global-evil-surround-mode))
+;; The evil-surround package simplifies handling surrounding characters, such as parentheses, brackets, quotes, etc.
+;; It provides key bindings to easily add, change, or delete these surrounding characters in pairs.
+;; For instance, you can surround the currently selected text with double quotes in visual state using S" or gS":
+(use-package evil-surround
+  :after evil
+  :ensure t
+  :defer t
+  :commands global-evil-surround-mode
+  :custom
+  (evil-surround-pairs-alist
+   '((?\( . ("(" . ")"))
+     (?\[ . ("[" . "]"))
+     (?\{ . ("{" . "}"))
+
+     (?\) . ("(" . ")"))
+     (?\] . ("[" . "]"))
+     (?\} . ("{" . "}"))
+
+     (?< . ("<" . ">"))
+     (?> . ("<" . ">"))))
+  :hook (after-init . global-evil-surround-mode))
 
 ;(with-eval-after-load "evil"
 ;  (evil-define-operator my-evil-comment-or-uncomment (beg end)
