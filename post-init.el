@@ -162,13 +162,16 @@
      (?> . ("<" . ">"))))
   :hook (after-init . global-evil-surround-mode))
 
-;(with-eval-after-load "evil"
-;  (evil-define-operator my-evil-comment-or-uncomment (beg end)
-;    "Toggle comment for the region between BEG and END."
-;    (interactive "<r>")
-;    (comment-or-uncomment-region beg end))
-;  (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment))
-;
+;; You can also add the following code to enable commenting and uncommenting by pressing gcc
+;; in normal mode and gc in visual mode
+;; (thanks you to the Reddit user u/mistakenuser for this contribution, which replaces the evil-commentary package):
+(with-eval-after-load "evil"
+  (evil-define-operator my-evil-comment-or-uncomment (beg end)
+    "Toggle comment for the region between BEG and END."
+    (interactive "<r>")
+    (comment-or-uncomment-region beg end))
+  (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment))
+
 ;(use-package evil-snipe
 ;  :defer t
 ;  :commands evil-snipe-mode
@@ -637,7 +640,7 @@
     (kbd "<leader> qr")  '("Restart Emacs" . restart-emacs)
 
     ;; comment
-    (kbd "<leader> /")  '("Commentary" . evil-commentary-line)
+    (kbd "<leader> /")  '("Commentary" . my-evil-comment-or-uncomment)
 
     ;; buffer
     (kbd "<leader> bn") '("Next buffer" . evil-next-buffer)
