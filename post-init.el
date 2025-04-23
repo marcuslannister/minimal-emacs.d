@@ -1,5 +1,6 @@
 ;;; post-init.el --- This file is loaded after init.el. It is useful for additional configurations or package setups that depend on the configurations in init.el -*- no-byte-compile: t; lexical-binding: t; -*-
 
+;; fork from https://github.com/jamescherti/minimal-emacs.d
 ;; Ensure adding the following compile-angel code at the very beginning
 ;; of your `~/.emacs.d/post-init.el` file, before all other packages.
 (use-package compile-angel
@@ -221,7 +222,7 @@
 ;; Window dividers separate windows visually. Window dividers are bars that can
 ;; be dragged with the mouse, thus allowing you to easily resize adjacent
 ;; windows.
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Window-Dividers.html
+;; httpsni//www.gnu.org/software/emacs/manual/html_node/emacs/Window-Dividers.html
 (add-hook 'after-init-hook #'window-divider-mode)
 
 ;; Dired buffers: Automatically hide file details (permissions, size,
@@ -616,6 +617,9 @@
 ;; Set leader key
 (evil-set-leader 'motion (kbd "SPC"))
 
+(defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
+      (apply orig-fn beg end type ?_ args))
+
 ;; customize key
 (evil-define-key nil 'global
     ;; <leader>
@@ -673,6 +677,9 @@
     (kbd "<leader> zf") '("Find file under a path saved in zoxide" . zoxide-find-file)
     (kbd "<leader> zt") '("Travel to a path saved in zoxide" . zoxide-travel)
     (kbd "<leader> zc") '("Change working directory to a path" . zoxide-cd)
+
+    ;; delete
+    (kbd "<leader> dd") '("Kill line" . kill-line)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
