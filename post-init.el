@@ -689,6 +689,16 @@
       (define-key vterm-mode-map (kbd key)
                   `(lambda () (interactive) (tab-bar-select-tab ,tab-number))))))
 
+(use-package magit
+  :ensure t
+  :config
+  ;; Full screen magit-status
+  (setq magit-display-buffer-function
+        #'magit-display-buffer-fullframe-status-v1))
+
+;; Enable hunk-level Ediff in Magit
+(setq magit-ediff-dwim-show-on-hunks t)
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
@@ -775,6 +785,9 @@
 
     ;; vterm
     (kbd "<leader> vt") '("Create new vterm" . multi-vterm)
+
+    ;; git
+    (kbd "<leader> gs") '("Show status" . magit-status)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
