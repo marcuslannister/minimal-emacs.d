@@ -571,7 +571,6 @@
 ;; Read this manual for how to specify `denote-templates'.  We do not
 ;; include an example here to avoid potential confusion.
 
-
 (setq denote-date-format nil) ; read doc string
 
 ;; By default, we do not show the context of links.  We just display
@@ -596,7 +595,6 @@
 ;;
 ;; OR if only want it in `denote-dired-directories':
 ;; (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
-
 
 ;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
 (denote-rename-buffer-mode 1)
@@ -706,21 +704,23 @@
     (kbd "<leader> bk") '("Kill current buffer" . kill-current-buffer)
     (kbd "<leader> bro") '("Read only mode" . read-only-mode)
     (kbd "<leader> bm") '("View message buffer" . view-echo-area-messages)
+    (kbd "<leader> be") '("Eval buffer" . eval-buffer)
 
     ;; window
     (kbd "<leader> w") '("Window" . evil-window-map)
 
     ;; <leader> o --- org
     (kbd "<leader> oa") '("Agenda" . org-agenda)
-    (kbd "<leader> ot") '("Todo list" . org-todo-list)
+    (kbd "<leader> ol") '("Todo list" . org-todo-list)
     (kbd "<leader> om") '("Tags search" . org-tags-view)
     (kbd "<leader> ov") '("View search" . org-search-view)
-    (kbd "<leader> oc") '("Todo change" . org-todo)
-    (kbd "<leader> op") '("Capture" . org-capture)
+    (kbd "<leader> ot") '("Todo change" . org-todo)
+    (kbd "<leader> oc") '("Capture" . org-capture)
     (kbd "<leader> od") '("Insert deadline" . org-deadline)
     (kbd "<leader> os") '("Insert schedule" . org-schedule)
     (kbd "<leader> or") '("Refile" . org-refile)
     (kbd "<leader> oil") '("Inser link" . org-insert-link)
+    (kbd "<leader> op") '("Change priority" . org-priority)
 
     ;; <leader> c --- clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
