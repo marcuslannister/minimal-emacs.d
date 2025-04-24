@@ -464,6 +464,23 @@
   (setq modus-themes-italic-constructs nil
         modus-themes-bold-constructs t)
 
+  ;; Configure the Modus Themes' appearance
+  ;; frome https://systemcrafters.net/emacs-from-scratch/the-modus-themes/
+  (setq modus-themes-mode-line '(accented borderless)
+        modus-themes-fringes 'subtle
+        modus-themes-tabs-accented t
+        modus-themes-paren-match '(bold intense)
+        modus-themes-prompts '(bold intense)
+        modus-themes-completions 'opinionated
+        modus-themes-org-blocks 'tinted-background
+        modus-themes-scale-headings t
+        Modus-themes-region '(bg-only)
+        modus-themes-headings
+        '((1 . (rainbow overline background 1.4))
+          (2 . (rainbow background 1.3))
+          (3 . (rainbow bold 1.2))
+          (t . (semilight 1.1))))    
+     
   ;; Apply more colorful foreground to some headings (headings 0-8).
   ;; Level 0 is for Org #+title and related.
   (setq modus-themes-common-palette-overrides
