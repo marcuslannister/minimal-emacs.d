@@ -464,43 +464,15 @@
   (setq modus-themes-italic-constructs nil
         modus-themes-bold-constructs t)
 
-  ;; Keep TODO at its default (so no override for it), but make DONE
-  ;; gray.
-  (setq modus-themes-common-palette-overrides
-        '((prose-done fg-dim)))
-
   ;; Apply more colorful foreground to some headings (headings 0-8).
   ;; Level 0 is for Org #+title and related.
   (setq modus-themes-common-palette-overrides
         '((fg-heading-1 blue-warmer)
-          (fg-heading-2 yellow-cooler)
-          (fg-heading-3 cyan-cooler)))
-  
-  ;; Like the above, but with gradient colors
-  (setq modus-themes-common-palette-overrides
-        '((fg-heading-1 blue)
-          (fg-heading-2 cyan)
-          (fg-heading-3 green)))
-  
-  ;; Add color to level 1 heading, but use the main foreground for
-  ;; others
-  (setq modus-themes-common-palette-overrides
-        '((fg-heading-1 blue)
-          (fg-heading-2 fg-main)
-          (fg-heading-3 fg-main)))
-  
-  ;; Apply colorful foreground, background, and overline (headings 0-8)
-  (setq modus-themes-common-palette-overrides
-        '((fg-heading-1 blue-warmer)
           (bg-heading-1 bg-blue-nuanced)
-          (overline-heading-1 blue)))
-  
-  ;; Apply gray scale foreground, background, and overline (headings 0-8)
-  (setq modus-themes-common-palette-overrides
-        '((fg-heading-1 fg-main)
-          (bg-heading-1 bg-dim)
-          (overline-heading-1 border)))
-
+          (overline-heading-1 blue)
+          (fg-heading-2 yellow-cooler)
+          (fg-heading-3 cyan-cooler)
+          (prose-done fg-dim)))
 
   ;; Load the theme of your choice.
   (load-theme 'modus-operandi :no-confirm)
@@ -743,6 +715,10 @@
 
     ;; delete
     (kbd "<leader> dd") '("Kill line" . kill-line)
+
+    ;; tab
+    (kbd "<leader> tn") '("Create new tab" . tab-new)
+    (kbd "<leader> tc") '("close tab" . tab-close)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)

@@ -43,12 +43,13 @@
   (setq org-todo-keyword-faces
         `(("TODO" . (:foreground ,(modus-themes-get-color-value 'green-intense) :weight bold))
           ("NEXT" . (:foreground ,(modus-themes-get-color-value 'blue) :weight bold))
+          ("DONE" . (:foreground ,(modus-themes-get-color-value 'fg-dim) :weight bold))
           ("WAITING" . (:foreground ,(modus-themes-get-color-value 'cyan) :weight bold))
           ("HOLD" . (:foreground ,(modus-themes-get-color-value 'magenta) :weight bold))
           ("CANCELLED" . (:foreground ,(modus-themes-get-color-value 'fg-dim) :weight bold))
           ("PHONE" . (:foreground ,(modus-themes-get-color-value 'rust) :weight bold))
           ("MEETING" . (:foreground ,(modus-themes-get-color-value 'rust) :weight bold)))))
- 
+
 (setq org-use-fast-todo-selection t)
 
 (setq org-todo-state-tags-triggers
