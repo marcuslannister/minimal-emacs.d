@@ -670,6 +670,14 @@
 (defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
       (apply orig-fn beg end type ?_ args))
 
+
+;; Bind Alt+1 through Alt+9 to tab-bar-select-tab
+(setq tab-bar-tab-hints t)
+(dotimes (i 9)
+  (let ((n (number-to-string (1+ i))))
+    (global-set-key (kbd (concat "M-" n))
+                    `(lambda () (interactive) (tab-bar-select-tab ,(1+ i))))))
+
 ;; customize key
 (evil-define-key nil 'global
     ;; <leader>
@@ -735,7 +743,7 @@
 
     ;; tab
     (kbd "<leader> tn") '("Create new tab" . tab-new)
-    (kbd "<leader> tc") '("close tab" . tab-close)
+    (kbd "<leader> tc") '("Close tab" . tab-close)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
