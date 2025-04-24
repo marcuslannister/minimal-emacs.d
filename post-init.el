@@ -671,6 +671,24 @@
 (use-package multi-vterm
   :ensure t)
 
+;; Bind M-1 through M-9 globally to switch tabs
+;; Assumes built-in tab-bar-mode or tab-line-mode
+(dotimes (i 9)
+  (let ((key (format "M-%d" (1+ i))) ; Create key string like "M-1", "M-2", etc.
+        (tab-number (1+ i)))        ; Tab index (1-based)
+    (global-set-key (kbd key)
+                    ;; Define a command to select the corresponding tab
+                    `(lambda () (interactive) (tab-bar-select-tab ,tab-number)))))
+
+;; Ensure the same bindings work within vterm buffers
+;; This overrides vterm's default behavior for these keys
+(with-eval-after-load 'vterm
+  (dotimes (i 9)
+    (let ((key (format "M-%d" (1+ i)))
+          (tab-number (1+ i)))
+      (define-key vterm-mode-map (kbd key)
+                  `(lambda () (interactive) (tab-bar-select-tab ,tab-number))))))
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
@@ -681,7 +699,6 @@
 
 (defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
       (apply orig-fn beg end type ?_ args))
-
 
 ;; Bind Alt+1 through Alt+9 to tab-bar-select-tab
 (dotimes (i 9)
