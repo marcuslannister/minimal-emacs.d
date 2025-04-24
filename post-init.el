@@ -659,6 +659,14 @@
 (use-package rg
   :ensure t)
 
+(use-package vterm
+   :ensure t
+   :config
+   (setq vterm-shell "/bin/zsh"))
+
+(use-package multi-vterm
+  :ensure t)
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
@@ -744,6 +752,9 @@
     ;; tab
     (kbd "<leader> tn") '("Create new tab" . tab-new)
     (kbd "<leader> tc") '("Close tab" . tab-close)
+
+    ;; vterm
+    (kbd "<leader> vt") '("Create new vterm" . multi-vterm)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
