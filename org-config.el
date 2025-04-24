@@ -15,7 +15,7 @@
 (setq org-agenda-clockreport-parameter-plist
     (quote (:maxlevel 5 :fileskip0 t :compact t :narrow 80 :formula % )))
 
-(run-at-time "5 min" (* 5 60) #'org-agenda-redo)
+;; (run-at-time "5 min" (* 5 60) #'org-agenda-redo)
 
 ;;; config from https://doc.norang.ca/org-mode.html
 
