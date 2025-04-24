@@ -27,16 +27,28 @@
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
-(setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "#a9dc76" :weight bold)
-              ("NEXT" :foreground "#78dce8" :weight bold)
-              ("DONE" :foreground "#727072" :weight bold)
-              ("WAITING" :foreground "#fc9867" :weight bold)
-              ("HOLD" :foreground "#ab9df2" :weight bold)
-              ("CANCELLED" :foreground "#727072" :weight bold)
-              ("MEETING" :foreground "#e2e22e" :weight bold)
-              ("PHONE" :foreground "#e2e22e" :weight bold))))
+;; work with doom-one theme
+;; (setq org-todo-keyword-faces
+;;       (quote (("TODO" :foreground "#a9dc76" :weight bold)
+;;               ("NEXT" :foreground "#78dce8" :weight bold)
+;;               ("DONE" :foreground "#727072" :weight bold)
+;;               ("WAITING" :foreground "#fc9867" :weight bold)
+;;               ("HOLD" :foreground "#ab9df2" :weight bold)
+;;               ("CANCELLED" :foreground "#727072" :weight bold)
+;;               ("MEETING" :foreground "#e2e22e" :weight bold)
+;;               ("PHONE" :foreground "#e2e22e" :weight bold))))
 
+;; work with modus theme
+(with-eval-after-load 'modus-themes
+  (setq org-todo-keyword-faces
+        `(("TODO" . (:foreground ,(modus-themes-get-color-value 'green-intense) :weight bold))
+          ("NEXT" . (:foreground ,(modus-themes-get-color-value 'blue) :weight bold))
+          ("WAITING" . (:foreground ,(modus-themes-get-color-value 'cyan) :weight bold))
+          ("HOLD" . (:foreground ,(modus-themes-get-color-value 'magenta) :weight bold))
+          ("CANCELLED" . (:foreground ,(modus-themes-get-color-value 'fg-dim) :weight bold))
+          ("PHONE" . (:foreground ,(modus-themes-get-color-value 'rust) :weight bold))
+          ("MEETING" . (:foreground ,(modus-themes-get-color-value 'rust) :weight bold)))))
+ 
 (setq org-use-fast-todo-selection t)
 
 (setq org-todo-state-tags-triggers

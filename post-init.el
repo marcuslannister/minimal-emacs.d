@@ -438,23 +438,74 @@
 ;; My Customization
 ;(load-theme 'dracula t)
 
-;; Using doom monokai theme
-(use-package doom-themes
+;; ;; Using doom monokai theme
+;; (use-package doom-themes
+;;   :ensure t
+;;   :config
+;;   (setq doom-themes-enable-bold t)
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (nerd-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config)
+;; 
+;;   ;; (load-theme 'doom-monokai-pro t))
+;;   (load-theme 'doom-one t))
+
+;;; modus theme
+(use-package modus-themes
   :ensure t
   :config
-  (setq doom-themes-enable-bold t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (nerd-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config)
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs nil
+        modus-themes-bold-constructs t)
 
-  ;; (load-theme 'doom-monokai-pro t))
-  (load-theme 'doom-one t))
+  ;; Keep TODO at its default (so no override for it), but make DONE
+  ;; gray.
+  (setq modus-themes-common-palette-overrides
+        '((prose-done fg-dim)))
+
+  ;; Apply more colorful foreground to some headings (headings 0-8).
+  ;; Level 0 is for Org #+title and related.
+  (setq modus-themes-common-palette-overrides
+        '((fg-heading-1 blue-warmer)
+          (fg-heading-2 yellow-cooler)
+          (fg-heading-3 cyan-cooler)))
+  
+  ;; Like the above, but with gradient colors
+  (setq modus-themes-common-palette-overrides
+        '((fg-heading-1 blue)
+          (fg-heading-2 cyan)
+          (fg-heading-3 green)))
+  
+  ;; Add color to level 1 heading, but use the main foreground for
+  ;; others
+  (setq modus-themes-common-palette-overrides
+        '((fg-heading-1 blue)
+          (fg-heading-2 fg-main)
+          (fg-heading-3 fg-main)))
+  
+  ;; Apply colorful foreground, background, and overline (headings 0-8)
+  (setq modus-themes-common-palette-overrides
+        '((fg-heading-1 blue-warmer)
+          (bg-heading-1 bg-blue-nuanced)
+          (overline-heading-1 blue)))
+  
+  ;; Apply gray scale foreground, background, and overline (headings 0-8)
+  (setq modus-themes-common-palette-overrides
+        '((fg-heading-1 fg-main)
+          (bg-heading-1 bg-dim)
+          (overline-heading-1 border)))
+
+
+  ;; Load the theme of your choice.
+  (load-theme 'modus-operandi :no-confirm)
+
+  (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
 
 ;; restart emacs command
 (use-package restart-emacs
