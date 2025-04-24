@@ -119,7 +119,11 @@
 (use-package vim-tab-bar
   :ensure t
   :commands vim-tab-bar-mode
-  :hook (after-init . vim-tab-bar-mode))
+  :init
+  (defun my/setup-vim-tab-bar ()
+    (vim-tab-bar-mode 1)
+    (setq tab-bar-tab-hints t))
+  :hook (after-init . my/setup-vim-tab-bar))
 
 (use-package vdiff
   :ensure t
@@ -680,7 +684,6 @@
 
 
 ;; Bind Alt+1 through Alt+9 to tab-bar-select-tab
-(setq tab-bar-tab-hints t)
 (dotimes (i 9)
   (let ((n (number-to-string (1+ i))))
     (global-set-key (kbd (concat "M-" n))
