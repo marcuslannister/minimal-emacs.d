@@ -699,6 +699,14 @@
 ;; Enable hunk-level Ediff in Magit
 (setq magit-ediff-dwim-show-on-hunks t)
 
+;; (use-package helm-org-rifle
+;;   :ensure t
+;;   :bind
+;;   ("C-c r" . helm-org-rifle-directories)
+;;   :config
+;;   ;; Set your org directories
+;;   (setq helm-org-rifle-directories '("~/org")))
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
@@ -788,6 +796,10 @@
 
     ;; git
     (kbd "<leader> gs") '("Show status" . magit-status)
+
+    ;; search
+    (kbd "<leader> sg") '("Search with consult rg" . consult-ripgrep)
+    (kbd "<leader> sf") '("Search with consult fd" . consult-fd)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
