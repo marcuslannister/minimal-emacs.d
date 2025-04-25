@@ -724,6 +724,15 @@
     (global-set-key (kbd (concat "M-" n))
                     `(lambda () (interactive) (tab-bar-select-tab ,(1+ i))))))
 
+(defun ai/cd-to-current-buffer ()
+  "Change default directory to the directory of the current buffer."
+  (interactive)
+  (if buffer-file-name
+      (let ((dir (file-name-directory buffer-file-name)))
+        (cd dir)
+        (message "Directory changed to: %s" dir))
+    (message "Buffer is not visiting a file")))
+
 ;; customize key
 (evil-define-key nil 'global
     ;; <leader>
@@ -778,6 +787,10 @@
     ;; denote
     (kbd "<leader> dn") '("Creat a denote" . denote)
     (kbd "<leader> dr") '("Rename file" . denote-rename-file)
+
+    ;; dired
+    (kbd "<leader> dc") '("Cd current file directory" . ai/cd-to-current-buffer)
+    (kbd "<leader> pwd") '("Show current directory" . pwd)
 
     ;; zoxide
     (kbd "<leader> zf") '("Find file under a path saved in zoxide" . zoxide-find-file)
