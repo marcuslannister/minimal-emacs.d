@@ -690,15 +690,6 @@
                     ;; Define a command to select the corresponding tab
                     `(lambda () (interactive) (tab-bar-select-tab ,tab-number)))))
 
-;; Ensure the same bindings work within vterm buffers
-;; This overrides vterm's default behavior for these keys
-(with-eval-after-load 'vterm
-  (dotimes (i 9)
-    (let ((key (format "M-%d" (1+ i)))
-          (tab-number (1+ i)))
-      (define-key vterm-mode-map (kbd key)
-                  `(lambda () (interactive) (tab-bar-select-tab ,tab-number))))))
-
 (use-package magit
   :ensure t
   :config
