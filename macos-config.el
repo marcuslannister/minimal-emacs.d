@@ -2,7 +2,7 @@
 
 ;; macOS specific key bindings
 (setq mac-option-modifier 'meta)
-;; (setq mac-command-modifier 'control)
+(setq mac-command-modifier 'super)
 ;; (setq mac-control-modifier 'super)
 
 ; macOS specific font settings
