@@ -2,8 +2,8 @@
 
 ;; macOS specific key bindings
 (setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'control)
-(setq mac-control-modifier 'super)
+;; (setq mac-command-modifier 'control)
+;; (setq mac-control-modifier 'super)
 
 ; macOS specific font settings
 (set-face-attribute 'default nil :font "MonoLisa Nerd Font-16")
