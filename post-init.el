@@ -708,6 +708,11 @@
 ;;   ;; Set your org directories
 ;;   (setq helm-org-rifle-directories '("~/org")))
 
+(setq tramp-default-method "sshx")
+;; (add-to-list 'tramp-connection-properties
+;;              (list (regexp-quote "/sshx:user@host:")
+;;                    "remote-shell" "/usr/bin/zsh"))
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
@@ -819,6 +824,9 @@
 
     ;; find
     (kbd "<leader> ff") '("Find file" . find-file)
+
+    ;; markdown
+    (kbd "<leader> mlp") '("Live Preview" . markdown-live-preview-mode)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
