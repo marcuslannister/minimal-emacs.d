@@ -774,6 +774,7 @@
     (kbd "<leader> or") '("Refile" . org-refile)
     (kbd "<leader> oil") '("Inser link" . org-insert-link)
     (kbd "<leader> op") '("Change priority" . org-priority)
+    (kbd "<leader> og") '("Lookup location" . org-goto)
 
     ;; <leader> c --- clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
@@ -792,6 +793,7 @@
     ;; dired
     (kbd "<leader> dc") '("Cd current file directory" . ai/cd-to-current-buffer)
     (kbd "<leader> pwd") '("Show current directory" . pwd)
+    (kbd "<leader> di") '("Dired" . dired)
 
     ;; zoxide
     (kbd "<leader> zf") '("Find file under a path saved in zoxide" . zoxide-find-file)
@@ -814,6 +816,9 @@
     ;; search
     (kbd "<leader> sg") '("Search with consult rg" . consult-ripgrep)
     (kbd "<leader> sf") '("Search with consult fd" . consult-fd)
+
+    ;; find
+    (kbd "<leader> ff") '("Find file" . find-file)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
