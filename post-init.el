@@ -495,6 +495,13 @@
           (fg-heading-3 cyan-cooler)
           (prose-done fg-dim)))
 
+  ;; Make line numbers less intense
+  (setq modus-themes-common-palette-overrides
+        '((fg-line-number-inactive "gray50")
+          (fg-line-number-active fg-main)
+          (bg-line-number-inactive unspecified)
+          (bg-line-number-active unspecified)))
+
   ;; Load the theme of your choice.
   (load-theme 'modus-operandi :no-confirm)
 
@@ -503,7 +510,6 @@
 ;; restart emacs command
 (use-package restart-emacs
   :ensure t)
-
 
 ;; Load OS-specific configurations
 (cond
@@ -537,6 +543,7 @@
   "Insert current timestamp in format YYYYMMDDTHHMM."
   (interactive)
   (insert (format-time-string "%Y%m%dT%H%M")))
+
 
 
 ;; denote
