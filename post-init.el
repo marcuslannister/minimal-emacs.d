@@ -186,8 +186,8 @@
 (setq column-number-mode t)
 (setq mode-line-position-column-line-format '("%l:%C"))
 
-;; Display of line numbers in the buffer:
-(setq display-line-numbers-mode 1)
+;; Display of line numbers in all buffers:
+(global-display-line-numbers-mode 1)
 
 (use-package which-key
   :ensure nil ; builtin
