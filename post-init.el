@@ -493,11 +493,10 @@
           (overline-heading-1 blue)
           (fg-heading-2 yellow-cooler)
           (fg-heading-3 cyan-cooler)
-          (prose-done fg-dim)))
+          (prose-done fg-dim)
 
   ;; Make line numbers less intense
-  (setq modus-themes-common-palette-overrides
-        '((fg-line-number-inactive "gray50")
+          (fg-line-number-inactive "gray50")
           (fg-line-number-active fg-main)
           (bg-line-number-inactive unspecified)
           (bg-line-number-active unspecified)))
