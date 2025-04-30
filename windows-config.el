@@ -20,4 +20,8 @@
 
 ;; Other Windows specific settings...
 
+(let ((scoop-shims "C:/Users/YourUsername/scoop/shims"))
+  (setenv "PATH" (concat scoop-shims ";" (getenv "PATH")))
+  (add-to-list 'exec-path scoop-shims))
+
 (provide 'windows-config)
