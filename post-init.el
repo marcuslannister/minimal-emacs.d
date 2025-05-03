@@ -719,6 +719,10 @@
 ;;              (list (regexp-quote "/sshx:user@host:")
 ;;                    "remote-shell" "/usr/bin/zsh"))
 
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.ya?ml\\'" . yaml-mode))
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
