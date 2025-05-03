@@ -723,6 +723,11 @@
   :ensure t
   :mode ("\\.ya?ml\\'" . yaml-mode))
 
+;; cliboard setting for mouse
+(setq select-active-regions nil)
+(setq mouse-drag-copy-region t)
+(global-set-key [mouse-2] 'mouse-yank-at-click)
+
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
 ;; Disable the space key in Dired so that it can be used as a leader key.
