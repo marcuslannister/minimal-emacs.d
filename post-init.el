@@ -723,6 +723,9 @@
   :ensure t
   :mode ("\\.ya?ml\\'" . yaml-mode))
 
+(use-package tramp-term
+  :ensure t)
+
 ;; cliboard setting for mouse
 (setq select-active-regions nil)
 (setq mouse-drag-copy-region t)
