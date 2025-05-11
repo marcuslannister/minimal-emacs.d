@@ -502,7 +502,7 @@
           (bg-line-number-active unspecified)))
 
   ;; Load the theme of your choice.
-  (load-theme 'modus-operandi :no-confirm)
+  (load-theme 'modus-operandi-tinted :no-confirm)
 
   (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
 
