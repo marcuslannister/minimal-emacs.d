@@ -125,17 +125,17 @@
     (setq tab-bar-tab-hints t))
   :hook (after-init . my/setup-vim-tab-bar))
 
-(use-package vdiff
-  :ensure t
-  :defer t
-  :commands (vdiff-buffers
-             vdiff-buffers3
-             vdiff-quit
-             vdiff-files
-             vdiff-files3)
-  :custom
-  (vdiff-auto-refine t)
-  (vdiff-only-highlight-refinements t))
+;; (use-package vdiff
+;;   :ensure t
+;;   :defer t
+;;   :commands (vdiff-buffers
+;;              vdiff-buffers3
+;;              vdiff-quit
+;;              vdiff-files
+;;              vdiff-files3)
+;;   :custom
+;;   (vdiff-auto-refine t)
+;;   (vdiff-only-highlight-refinements t))
 
 (use-package evil-visualstar
   :after evil
