@@ -543,8 +543,6 @@
   (interactive)
   (insert (format-time-string "%Y%m%dT%H%M")))
 
-
-
 ;; denote
 ;; Remember that the website version of this manual shows the latest
 ;; developments, which may not be available in the package you are
@@ -730,6 +728,11 @@
 (setq select-active-regions nil)
 (setq mouse-drag-copy-region t)
 (global-set-key [mouse-2] 'mouse-yank-at-click)
+
+;; Show Tabs and Trailing Whitespace
+(setq whitespace-style '(face tabs trailing tab-mark))
+(global-whitespace-mode 1)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
