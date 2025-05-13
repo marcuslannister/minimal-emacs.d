@@ -765,7 +765,7 @@
     (kbd "<leader> ,")  '("Switch buffer" . switch-to-buffer)
     (kbd "<leader> ;")  '("Insert timestamp" . insert-timestamp)
 
-    ;; <leader> q --- quit/session
+    ;; session
     (kbd "<leader> qq")  '("Quit Emacs" . save-buffers-kill-terminal)
     (kbd "<leader> qr")  '("Restart Emacs" . restart-emacs)
 
@@ -785,7 +785,7 @@
     ;; window
     (kbd "<leader> w") '("Window" . evil-window-map)
 
-    ;; <leader> o --- org
+    ;; org
     (kbd "<leader> oa") '("Agenda" . org-agenda)
     (kbd "<leader> ol") '("Todo list" . org-todo-list)
     (kbd "<leader> om") '("Tags search" . org-tags-view)
@@ -845,6 +845,9 @@
 
     ;; markdown
     (kbd "<leader> mlp") '("Live Preview" . markdown-live-preview-mode)
+
+    ;; system
+    (kbd "<leader> ss")  '("Start server" . server-start)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
