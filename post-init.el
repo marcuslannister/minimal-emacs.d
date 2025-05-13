@@ -456,7 +456,7 @@
 ;;   (doom-themes-treemacs-config)
 ;;   ;; Corrects (and improves) org-mode's native fontification.
 ;;   (doom-themes-org-config)
-;; 
+;;
 ;;   ;; (load-theme 'doom-monokai-pro t))
 ;;   (load-theme 'doom-one t))
 
@@ -483,8 +483,8 @@
         '((1 . (rainbow overline background 1.4))
           (2 . (rainbow background 1.3))
           (3 . (rainbow bold 1.2))
-          (t . (semilight 1.1))))    
-     
+          (t . (semilight 1.1))))
+
   ;; Apply more colorful foreground to some headings (headings 0-8).
   ;; Level 0 is for Org #+title and related.
   (setq modus-themes-common-palette-overrides
@@ -862,4 +862,3 @@
   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)  ; Move down
   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line) ; Move up
   (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char))    ; Move right
-
