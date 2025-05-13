@@ -799,7 +799,7 @@
     (kbd "<leader> op") '("Change priority" . org-priority)
     (kbd "<leader> og") '("Lookup location" . org-goto)
 
-    ;; <leader> c --- clock
+    ;; clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
     (kbd "<leader> ci") '("Start clock" . org-clock-in)
     (kbd "<leader> co") '("Stop clock" . org-clock-out)
