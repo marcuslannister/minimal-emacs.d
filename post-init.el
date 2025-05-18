@@ -704,6 +704,11 @@
 ;; Enable hunk-level Ediff in Magit
 (setq magit-ediff-dwim-show-on-hunks t)
 
+(use-package git-gutter
+  :ensure t
+  :config
+  (global-git-gutter-mode +1))
+
 ;; (use-package helm-org-rifle
 ;;   :ensure t
 ;;   :bind
