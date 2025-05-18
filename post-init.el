@@ -475,7 +475,9 @@
         modus-themes-tabs-accented t
         modus-themes-paren-match '(bold intense)
         modus-themes-prompts '(bold intense)
-        modus-themes-completions 'opinionated
+        modus-themes-completions
+        '((matches . (extrabold underline))
+          (selection . (extrabold underline)))
         modus-themes-org-blocks 'tinted-background
         modus-themes-scale-headings t
         Modus-themes-region '(bg-only)
