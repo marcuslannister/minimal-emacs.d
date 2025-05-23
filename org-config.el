@@ -679,3 +679,7 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
   (let ((current-prefix-arg '(4)))  ;; This sets the C-u prefix argument
     (call-interactively 'org-clock-in)))
 
+;; 18 Productivity Tools
+
+;; Include agenda archive files when searching for things
+(setq org-agenda-text-search-extra-files (quote (agenda-archives)))
