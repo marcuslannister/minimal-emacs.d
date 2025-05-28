@@ -731,6 +731,14 @@
 (use-package tramp-term
   :ensure t)
 
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :ensure t)
+
 ;; cliboard setting for mouse
 (setq select-active-regions nil)
 (setq mouse-drag-copy-region t)
