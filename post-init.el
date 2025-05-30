@@ -740,6 +740,11 @@
 (use-package yasnippet-snippets
   :ensure t)
 
+(use-package nix-mode
+  :ensure t
+  :mode "\\.nix\\'"
+)
+
 ;; cliboard setting for mouse
 (setq select-active-regions nil)
 (setq mouse-drag-copy-region t)
