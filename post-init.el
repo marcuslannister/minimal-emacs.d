@@ -802,9 +802,10 @@
     (kbd "<leader> bs") '("Save buffer" . basic-save-buffer)
     (kbd "<leader> ba") '("Save all buffers" . evil-write-all)
     (kbd "<leader> bk") '("Kill current buffer" . kill-current-buffer)
-    (kbd "<leader> bro") '("Read only mode" . read-only-mode)
+    (kbd "<leader> bo") '("Read only mode" . read-only-mode)
     (kbd "<leader> bm") '("View message buffer" . view-echo-area-messages)
     (kbd "<leader> be") '("Eval buffer" . eval-buffer)
+    (kbd "<leader> br") '("Revert buffer" . revert-buffer)
 
     ;; window
     (kbd "<leader> w") '("Window" . evil-window-map)
