@@ -781,6 +781,12 @@
         (message "Directory changed to: %s" dir))
     (message "Buffer is not visiting a file")))
 
+;; Disable version control for all TRAMP files
+(setq vc-ignore-dir-regexp
+      (format "\\(%s\\)\\|\\(%s\\)"
+              vc-ignore-dir-regexp
+              tramp-file-name-regexp))
+
 ;; customize key
 (evil-define-key nil 'global
     ;; <leader>
