@@ -763,8 +763,9 @@
 ;; Set leader key
 (evil-set-leader 'motion (kbd "SPC"))
 
-(defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
+(defun my/evil-delete (orig-fn beg end &optional type _ &rest args)
       (apply orig-fn beg end type ?_ args))
+(advice-add 'evil-delete :around 'my/evil-delete)
 
 ;; Bind Alt+1 through Alt+9 to tab-bar-select-tab
 (dotimes (i 9)
