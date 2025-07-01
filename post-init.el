@@ -99,6 +99,14 @@
   (evil-select-search-module 'evil-search-module 'evil-search)
   (evil-mode 1))
 
+;; Block cursor in normal mode
+(setq evil-normal-state-cursor '(box))
+;; Blinking underline in insert mode
+(setq evil-insert-state-cursor '((hbar . 3)))
+;; Blinking only in insert mode
+(add-hook 'evil-insert-state-entry-hook (lambda () (blink-cursor-mode 1)))
+(add-hook 'evil-insert-state-exit-hook (lambda () (blink-cursor-mode 0)))
+
 (use-package evil-collection
   :after evil
   :ensure t
