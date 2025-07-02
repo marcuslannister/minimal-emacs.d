@@ -18,6 +18,9 @@
 (setq w32-get-true-file-attributes nil)
 (setq inhibit-compacting-font-caches t)
 
+;; Set cursor color
+(set-face-attribute 'cursor nil :background "#d00000")
+
 ;; Other Windows specific settings...
 
 (provide 'windows-config)
