@@ -14,7 +14,8 @@
 (add-hook 'vterm-mode-hook
   (lambda ()
     ;; (face-remap-add-relative 'default '(:family "IosevkaTerm Nerd Font Mono" :height 160))))
-    (face-remap-add-relative 'default '(:family "IosevkaTerm Nerd Font Mono" :height 180))))
+    ;; (face-remap-add-relative 'default '(:family "IosevkaTerm Nerd Font Mono" :height 180))))
+    (face-remap-add-relative 'default '(:family "AporeticSansMono Nerd Font" :height 180))))
     ;; (face-remap-add-relative 'default '(:font "IosevkaTerm Nerd Font Mono-16"))))
 
 ;; If you use `org' and don't want your org files in the default location below,
