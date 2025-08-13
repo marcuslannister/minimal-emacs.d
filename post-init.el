@@ -750,8 +750,14 @@
 
 (use-package nix-mode
   :ensure t
-  :mode "\\.nix\\'"
-)
+  :mode "\\.nix\\'")
+
+(use-package substitute
+  :ensure t)
+
+;; If you want a message reporting the matches that changed in the
+;; given context.  We don't do it by default.
+(add-hook 'substitute-post-replace-functions #'substitute-report-operation)
 
 ;; cliboard setting for mouse
 (setq select-active-regions nil)
