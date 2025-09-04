@@ -469,6 +469,9 @@
 ;;   ;; (load-theme 'doom-monokai-pro t))
 ;;   (load-theme 'doom-one t))
 
+;; (use-package flexoki-themes
+;;   :ensure t)
+
 ;;; modus theme
 (use-package modus-themes
   :ensure t
@@ -883,8 +886,9 @@
     (kbd "<leader> gs") '("Show status" . magit-status)
 
     ;; search
-    (kbd "<leader> sg") '("Search with consult rg" . consult-ripgrep)
-    (kbd "<leader> sf") '("Search with consult fd" . consult-fd)
+    (kbd "<leader> sg") '("Search with rg" . rgrep)
+    (kbd "<leader> scg") '("Search with consult rg" . consult-ripgrep)
+    (kbd "<leader> scf") '("Search with consult fd" . consult-fd)
 
     ;; find
     (kbd "<leader> ff") '("Find file" . find-file)
