@@ -770,7 +770,23 @@
 ;; Show Tabs and Trailing Whitespace
 (setq whitespace-style '(face tabs trailing tab-mark))
 (global-whitespace-mode 1)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; auto-save
+(add-to-list 'load-path "~/github/auto-save/") ; add auto-save to your load-path
+(require 'auto-save)
+(auto-save-enable)
+
+(setq auto-save-silent t)   ; quietly save
+(setq auto-save-delete-trailing-whitespace t)  ; automatically delete spaces at the end of the line when saving
+
+;;; custom predicates if you don't want auto save.
+;;; disable auto save mode when current filetype is an gpg file.
+(setq auto-save-disable-predicates
+      '((lambda ()
+      (string-suffix-p
+      "gpg"
+      (file-name-extension (buffer-name)) t))))
 
 ;; Bind Super+v to paste (yank)
 (global-set-key (kbd "s-v") 'yank)
