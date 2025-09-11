@@ -14,6 +14,10 @@
   ;; A local mode that compiles .el files whenever the user saves them.
   ;; (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode)
 
+  ;; Exclude compressed files from compilation
+  (setq compile-angel-excluded-files-regexps
+        '("\\.el\\.gz$"))
+
   ;; A global mode that compiles .el files before they are loaded.
   (compile-angel-on-load-mode))
 
