@@ -867,6 +867,8 @@
     (kbd "<leader> oil") '("Inser link" . org-insert-link)
     (kbd "<leader> op") '("Change priority" . org-priority)
     (kbd "<leader> og") '("Lookup location" . org-goto)
+    (kbd "<leader> oih") '("Insert heading" . org-insert-heading)
+    (kbd "<leader> ois") '("Insert subheading" . org-insert-subheading)
 
     ;; clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
@@ -909,6 +911,7 @@
     (kbd "<leader> sg") '("Search with rg" . rgrep)
     (kbd "<leader> scg") '("Search with consult rg" . consult-ripgrep)
     (kbd "<leader> scf") '("Search with consult fd" . consult-fd)
+    (kbd "<leader> sch") '("Search with consult org heading" . consult-org-heading)
 
     ;; find
     (kbd "<leader> ff") '("Find file" . find-file)
