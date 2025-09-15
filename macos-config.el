@@ -32,5 +32,23 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (add-to-list 'exec-path "/usr/local/bin")
 
+;; vterm configuration for macOS
+(use-package vterm
+  :ensure t
+  :config
+  (setq vterm-shell "/bin/zsh"))
+
+(use-package multi-vterm
+  :ensure t)
+
+;; Ensure the same bindings work within vterm buffers
+;; This overrides vterm's default behavior for these keys
+(with-eval-after-load 'vterm
+  (dotimes (i 9)
+    (let ((key (format "M-%d" (1+ i)))
+          (tab-number (1+ i)))
+      (define-key vterm-mode-map (kbd key)
+                  `(lambda () (interactive) (tab-bar-select-tab ,tab-number))))))
+
 (provide 'macos-config)
 

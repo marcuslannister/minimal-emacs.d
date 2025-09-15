@@ -685,24 +685,6 @@
 (use-package rg
   :ensure t)
 
-(cond
- ((eq system-type 'darwin)
-  (use-package vterm
-    :ensure t
-    :config
-    (setq vterm-shell "/bin/zsh"))
-
-  (use-package multi-vterm
-    :ensure t)
- ;; Ensure the same bindings work within vterm buffers
- ;; This overrides vterm's default behavior for these keys
- (with-eval-after-load 'vterm
-   (dotimes (i 9)
-     (let ((key (format "M-%d" (1+ i)))
-           (tab-number (1+ i)))
-       (define-key vterm-mode-map (kbd key)
-                   `(lambda () (interactive) (tab-bar-select-tab ,tab-number))))))))
-
 ;; Bind M-1 through M-9 globally to switch tabs
 ;; Assumes built-in tab-bar-mode or tab-line-mode
 (dotimes (i 9)
