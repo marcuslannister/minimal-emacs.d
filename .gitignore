@@ -1,6 +1,21 @@
+# Ignore everything by default
 *
+
+# Allow essential files
 !README.md
 !early-init.el
 !init.el
 !.images/
 !.LICENSE
+!CLAUDE.md
+
+# Allow configuration files
+!post-init.el
+!macos-config.el
+!linux-config.el
+!windows-config.el
+!org-config.el
+
+# Allow snippets directory and files
+!snippets/
+!snippets/**
