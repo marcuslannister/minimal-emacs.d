@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: heading level 4
+# key: h4
+# group: headings
+# --
+**** ${1:Heading Title}
+$0
