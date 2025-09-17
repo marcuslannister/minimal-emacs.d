@@ -23,4 +23,9 @@
 
 ;; Other Windows specific settings...
 
+;; Add emacs bin and ucrt64 directory to path
+(add-to-list 'exec-path invocation-directory)
+(add-to-list 'exec-path "d:/msys64/ucrt64/bin")
+(setenv "PATH" (concat "d:/msys64/ucrt64/bin" path-separator invocation-directory path-separator (getenv "PATH")))
+
 (provide 'windows-config)
