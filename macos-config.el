@@ -48,11 +48,11 @@
 ;; Fallback to original settings if above doesn't work
 ;; (set-face-attribute 'default nil :font "IosevkaTerm Nerd Font Mono-16")
 
-(add-hook 'vterm-mode-hook
-  (lambda ()
-    ;; (face-remap-add-relative 'default '(:family "IosevkaTerm Nerd Font Mono" :height 180))))
-    (face-remap-add-relative 'default '(:family "AporeticSansMono Nerd Font" :height 180))))
-    ;; (face-remap-add-relative 'default '(:font "IosevkaTerm Nerd Font Mono-16"))))
+;; (add-hook 'vterm-mode-hook
+;;   (lambda ()
+;;     ;; (face-remap-add-relative 'default '(:family "IosevkaTerm Nerd Font Mono" :height 180))))
+;;     (face-remap-add-relative 'default '(:family "AporeticSansMono Nerd Font" :height 180))))
+;;     ;; (face-remap-add-relative 'default '(:font "IosevkaTerm Nerd Font Mono-16"))))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -68,22 +68,22 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (add-to-list 'exec-path "/usr/local/bin")
 
-;; vterm configuration for macOS
-(use-package vterm
-  :ensure t
-  :config
-  (setq vterm-shell "/bin/zsh"))
+;; ;; vterm configuration for macOS
+;; (use-package vterm
+;;   :ensure t
+;;   :config
+;;   (setq vterm-shell "/bin/zsh"))
+;;
+;; (use-package multi-vterm
+;;   :ensure t)
 
-(use-package multi-vterm
-  :ensure t)
-
-;; Ensure the same bindings work within vterm buffers
-;; This overrides vterm's default behavior for these keys
-(with-eval-after-load 'vterm
-  (dotimes (i 9)
-    (let ((key (format "M-%d" (1+ i)))
-          (tab-number (1+ i)))
-      (define-key vterm-mode-map (kbd key)
-                  `(lambda () (interactive) (tab-bar-select-tab ,tab-number))))))
+;; ;; Ensure the same bindings work within vterm buffers
+;; ;; This overrides vterm's default behavior for these keys
+;; (with-eval-after-load 'vterm
+;;   (dotimes (i 9)
+;;     (let ((key (format "M-%d" (1+ i)))
+;;           (tab-number (1+ i)))
+;;       (define-key vterm-mode-map (kbd key)
+;;                   `(lambda () (interactive) (tab-bar-select-tab ,tab-number))))))
 
 (provide 'macos-config)
