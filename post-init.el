@@ -685,6 +685,14 @@
 (use-package rg
   :ensure t)
 
+(rg-define-search rg-search-everything
+  "Search files including hidden and ignore"
+  :query ask
+  :format literal
+  :files "everything"
+  :flags ("--hidden --no-ignore")
+  :menu ("Search" "hn" "Everything"))
+
 ;; Bind M-1 through M-9 globally to switch tabs
 ;; Assumes built-in tab-bar-mode or tab-line-mode
 (dotimes (i 9)
@@ -890,10 +898,11 @@
     (kbd "<leader> gs") '("Show status" . magit-status)
 
     ;; search
-    (kbd "<leader> sg") '("Search with rg" . rgrep)
+    (kbd "<leader> sgr") '("Search with rg" . rgrep)
     (kbd "<leader> scg") '("Search with consult rg" . consult-ripgrep)
     (kbd "<leader> scf") '("Search with consult fd" . consult-fd)
     (kbd "<leader> sch") '("Search with consult org heading" . consult-org-heading)
+    (kbd "<leader> sghn") '("Search with rg everything" . rg-search-everything)
 
     ;; find
     (kbd "<leader> ff") '("Find file" . find-file)
