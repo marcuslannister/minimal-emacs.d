@@ -934,7 +934,7 @@ The completion candidates include the Git status of each file."
 
     ;; git
     (kbd "<leader> gs") '("Show status" . magit-status)
-    (kbd "<leader> gb") '("Show status" . emacs-solo/switch-git-status-buffer))
+    (kbd "<leader> gb") '("Show status" . emacs-solo/switch-git-status-buffer)
 
     ;; search
     (kbd "<leader> sgr") '("Search with rg" . rgrep)
