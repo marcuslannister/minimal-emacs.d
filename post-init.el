@@ -815,6 +815,13 @@
     ;; Help
     (kbd "?") 'ztree-diff-toggle-help))
 
+(use-package dash
+  :ensure t)
+
+(add-to-list 'load-path "~/github/org-now/")
+(require 'org-now)
+(setq org-now-location '("~/org/todo.org" "Now"))
+
 ;; cliboard setting for mouse
 (setq select-active-regions nil)
 (setq mouse-drag-copy-region t)
