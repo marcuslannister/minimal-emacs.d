@@ -19,3 +19,6 @@
 # Allow snippets directory and files
 !snippets/
 !snippets/**
+
+# Allow recompile el script
+!recompile-el.sh
