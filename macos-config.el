@@ -68,6 +68,11 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (add-to-list 'exec-path "/usr/local/bin")
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; ;; vterm configuration for macOS
 ;; (use-package vterm
 ;;   :ensure t
