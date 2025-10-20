@@ -93,23 +93,31 @@
 
 (use-package evil
   :ensure t
+  :demand t  ; Force immediate loading
   :init
+  ;; These must be set before evil loads
   (setq evil-undo-system 'undo-fu)
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
-  :custom
-  (evil-want-Y-yank-to-eol t)
+  (setq evil-want-Y-yank-to-eol t)
+
+  ;; Ensure evil-core is loaded
+  (defvar evil-mode-buffers nil
+    "List of buffers with Evil mode enabled.")
+
   :config
   (evil-select-search-module 'evil-search-module 'evil-search)
-  (evil-mode 1))
 
-;; Block cursor in normal mode
-(setq evil-normal-state-cursor '(box))
-;; Blinking underline in insert mode
-(setq evil-insert-state-cursor '((hbar . 3)))
-;; Blinking only in insert mode
-(add-hook 'evil-insert-state-entry-hook (lambda () (blink-cursor-mode 1)))
-(add-hook 'evil-insert-state-exit-hook (lambda () (blink-cursor-mode 0)))
+  ;; Block cursor in normal mode
+  (setq evil-normal-state-cursor '(box))
+  ;; Blinking underline in insert mode
+  (setq evil-insert-state-cursor '((hbar . 3)))
+
+  ;; Blinking only in insert mode
+  (add-hook 'evil-insert-state-entry-hook (lambda () (blink-cursor-mode 1)))
+  (add-hook 'evil-insert-state-exit-hook (lambda () (blink-cursor-mode 0)))
+
+  (evil-mode 1))
 
 (use-package evil-collection
   :after evil
