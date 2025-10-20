@@ -45,15 +45,15 @@
 ;; the precise point where you previously left off.
 (add-hook 'after-init-hook #'save-place-mode)
 
-;; Enable `auto-save-mode' to prevent data loss. Use `recover-file' or
-;; `recover-session' to restore unsaved changes.
-(setq auto-save-default t)
-
-(setq auto-save-interval 300)
-(setq auto-save-timeout 30)
-
-(setq auto-save-visited-interval 5)   ; Save after 5 seconds if inactivity
-(auto-save-visited-mode 1)
+;; ;; Enable `auto-save-mode' to prevent data loss. Use `recover-file' or
+;; ;; `recover-session' to restore unsaved changes.
+;; (setq auto-save-default t)
+;;
+;; (setq auto-save-interval 300)
+;; (setq auto-save-timeout 30)
+;;
+;; (setq auto-save-visited-interval 5)   ; Save after 5 seconds if inactivity
+;; (auto-save-visited-mode 1)
 
 (use-package corfu
   :ensure t
