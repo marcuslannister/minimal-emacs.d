@@ -927,7 +927,18 @@ The completion candidates include the Git status of each file."
                 (when file-path
                   (find-file (expand-file-name file-path expanded-root)))))))))))
 
-;; customize key
+;; Majutsu
+(use-package majutsu
+  :vc (:url "https://github.com/0WD0/majutsu")
+  :config
+
+  ;; Use Emacs state (not Evil) in Majutsu buffers
+  (with-eval-after-load 'majutsu
+    (evil-set-initial-state 'majutsu-log-mode 'emacs)))
+
+;; -------------------------------------------------------------------------- ;;
+;; ----------------------------- customize key ------------------------------ ;;
+;; -------------------------------------------------------------------------- ;;
 (evil-define-key nil 'global
     ;; <leader>
     (kbd "<leader> :")  '("M-x" . execute-extended-command)
@@ -1010,7 +1021,7 @@ The completion candidates include the Git status of each file."
 
     ;; git
     (kbd "<leader> gs") '("Show status" . magit-status)
-    (kbd "<leader> gb") '("Show status" . emacs-solo/switch-git-status-buffer)
+    (kbd "<leader> gb") '("Switch git status buffer" . emacs-solo/switch-git-status-buffer)
 
     ;; search
     (kbd "<leader> sgr") '("Search with rg" . rgrep)
@@ -1027,6 +1038,9 @@ The completion candidates include the Git status of each file."
 
     ;; system
     (kbd "<leader> ss")  '("Start server" . server-start)
+
+    ;; Majutsu
+    (kbd "<leader> jj") '("Show status" . magit-status)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
