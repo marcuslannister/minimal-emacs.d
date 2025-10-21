@@ -932,9 +932,17 @@ The completion candidates include the Git status of each file."
   :vc (:url "https://github.com/0WD0/majutsu")
   :config
 
-  ;; Use Emacs state (not Evil) in Majutsu buffers
+  ;; Disable Evil in all Majutsu buffers
   (with-eval-after-load 'majutsu
-    (evil-set-initial-state 'majutsu-log-mode 'emacs)))
+    ;; Set Emacs state for all Majutsu modes
+    (dolist (mode '(majutsu-log-mode
+                    majutsu-status-mode
+                    majutsu-diff-mode
+                    majutsu-revision-mode
+                    majutsu-process-mode
+                    majutsu-mode))
+      (when (fboundp mode)  ; Only if mode exists
+        (evil-set-initial-state mode 'emacs)))))
 
 ;; -------------------------------------------------------------------------- ;;
 ;; ----------------------------- customize key ------------------------------ ;;
