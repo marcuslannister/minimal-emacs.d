@@ -22,3 +22,6 @@
 
 # Allow recompile el script
 !recompile-el.sh
+
+# Allow AI doc
+!AGENTS.md
