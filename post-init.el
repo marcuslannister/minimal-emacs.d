@@ -931,7 +931,6 @@ The completion candidates include the Git status of each file."
 (use-package majutsu
   :vc (:url "https://github.com/0WD0/majutsu")
   :config
-
   ;; Disable Evil in all Majutsu buffers
   (with-eval-after-load 'majutsu
     ;; Set Emacs state for all Majutsu modes
@@ -1048,7 +1047,9 @@ The completion candidates include the Git status of each file."
     (kbd "<leader> ss")  '("Start server" . server-start)
 
     ;; Majutsu
-    (kbd "<leader> jj") '("Show status" . magit-status)
+    (kbd "<leader> jj") '("Show status" . majutsu)
+    (kbd "<leader> jl") '("Show log" . majutsu-log)
+    (kbd "<leader> jd") '("Show diff" . majutsu-diff)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
