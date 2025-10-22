@@ -828,7 +828,7 @@
 
 (add-to-list 'load-path "~/github/org-now/")
 (require 'org-now)
-(setq org-now-location '("~/org/todo.org" "Now"))
+(setq org-now-location '("~/org/now.org" "Now"))
 (setq org-now-window-side 'bottom)
 
 ;; cliboard setting for mouse
