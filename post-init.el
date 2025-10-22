@@ -992,6 +992,7 @@ The completion candidates include the Git status of each file."
     (kbd "<leader> ois") '("Insert subheading" . org-insert-subheading)
     (kbd "<leader> onl") '("Add link to org-now" . org-now-link)
     (kbd "<leader> ont") '("Toggle org-now side window" . org-now)
+    (kbd "<leader> oo") '("Open at point" . org-open-at-point)
 
     ;; clock
     (kbd "<leader> ct") '("Update time" . org-clock-update-time-maybe)
