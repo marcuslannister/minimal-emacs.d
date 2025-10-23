@@ -73,6 +73,22 @@
   :config
   (exec-path-from-shell-initialize))
 
+;; Majutsu
+(use-package majutsu
+  :vc (:url "https://github.com/0WD0/majutsu")
+  :config
+  ;; Disable Evil in all Majutsu buffers
+  (with-eval-after-load 'majutsu
+    ;; Set Emacs state for all Majutsu modes
+    (dolist (mode '(majutsu-log-mode
+                    majutsu-status-mode
+                    majutsu-diff-mode
+                    majutsu-revision-mode
+                    majutsu-process-mode
+                    majutsu-mode))
+      (when (fboundp mode)  ; Only if mode exists
+        (evil-set-initial-state mode 'emacs)))))
+
 ;; ;; vterm configuration for macOS
 ;; (use-package vterm
 ;;   :ensure t
