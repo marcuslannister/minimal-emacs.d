@@ -970,14 +970,29 @@ The completion candidates include the Git status of each file."
                   (find-file (expand-file-name file-path expanded-root)))))))))))
 
 (use-package gptel
-  :ensure t)
+  :ensure t
+  :config (require 'gptel-org))
 
 (setq
-  gptel-model 'sonar
-  gptel-backend
-  (gptel-make-perplexity "Perplexity"
-                         :key #'gptel-api-key-from-auth-source
-                         :stream t))
+ gptel-model "sone-gemini-2.5-flash-think-0"
+ gptel-backend
+ (gptel-make-openai "sone"
+   :host "sone.19982002.xyz"
+   :key #'gptel-api-key-from-auth-source
+   :models '("sone-gemini-2.5-flash-think-0"
+             "sone-gemini-2.5-flash"
+             "sone-gemini-2.0-flash-think-0"
+             "sone-gemini-2.5-flash"
+             "sone-gemini-2.5-pro-search")
+   :stream t)
+
+ gptel-backends
+ (list gptel-backend
+       (gptel-make-perplexity "Perplexity"
+         :host "api.perplexity.ai"
+         :key #'gptel-api-key-from-auth-source
+         :models '("sonar")
+         :stream t)))
 
 ;; -------------------------------------------------------------------------- ;;
 ;; ----------------------------- customize key ------------------------------ ;;
@@ -1087,6 +1102,11 @@ The completion candidates include the Git status of each file."
     (kbd "<leader> jj") '("Show status" . majutsu)
     (kbd "<leader> jl") '("Show log" . majutsu-log)
     (kbd "<leader> jd") '("Show diff" . majutsu-diff)
+
+    ;; gptel
+    (kbd "<leader> gpt") '("start a chat" . gptel)
+    (kbd "<leader> gps") '("submit prompt to llm" . gptel-send)
+    (kbd "<leader> gpm") '("change prompt" . gptel-menu)
 
     ;; org journal
     (kbd "<leader> jn") '("Creat a entry" . org-journal-new-entry)
