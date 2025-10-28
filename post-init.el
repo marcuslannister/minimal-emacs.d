@@ -969,6 +969,16 @@ The completion candidates include the Git status of each file."
                 (when file-path
                   (find-file (expand-file-name file-path expanded-root)))))))))))
 
+(use-package gptel
+  :ensure t)
+
+(setq
+  gptel-model 'sonar
+  gptel-backend
+  (gptel-make-perplexity "Perplexity"
+                         :key #'gptel-api-key-from-auth-source
+                         :stream t))
+
 ;; -------------------------------------------------------------------------- ;;
 ;; ----------------------------- customize key ------------------------------ ;;
 ;; -------------------------------------------------------------------------- ;;
